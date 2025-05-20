@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>学术成果 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* 学术成果页特有样式 */
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/publications-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .publications-container {
+      padding: 60px 0;
+    }
+
+    .publications-filter {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .filter-btn {
+      padding: 8px 20px;
+      border: none;
+      background-color: var(--light-gray);
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .filter-btn:hover {
+      background-color: var(--medium-gray);
+    }
+
+    .filter-btn.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .publications-year {
+      margin-bottom: 50px;
+    }
+
+    .year-heading {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .year-heading h2 {
+      font-size: 1.8rem;
+      margin: 0;
+      position: relative;
+      display: inline-block;
+      padding-right: 20px;
+    }
+
+    .year-line {
+      flex: 1;
+      height: 2px;
+      background-color: var(--medium-gray);
+    }
+
+    .publication-card {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 25px;
+      margin-bottom: 25px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .publication-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .publication-title {
+      font-size: 1.2rem;
+      margin: 0 0 15px;
+      color: var(--dark-color);
+    }
+
+    .publication-authors {
+      margin-bottom: 10px;
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+    }
+
+    .publication-venue {
+      display: inline-block;
+      margin-bottom: 15px;
+      font-weight: 500;
+      color: var(--primary-color);
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      background-color: rgba(var(--primary-rgb), 0.1);
+    }
+
+    .publication-abstract {
+      margin-bottom: 20px;
+      color: var(--dark-gray);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .publication-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    .publication-link {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 15px;
+      border-radius: 20px;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .publication-link:hover {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .publication-link i {
+      margin-right: 5px;
+    }
+
+    .publication-info {
+      margin-top: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.85rem;
+    }
+
+    .publication-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .publication-tag {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 20px;
+      background-color: var(--light-gray);
+      color: var(--dark-gray);
+    }
+
+    .publication-metrics {
+      display: flex;
+      gap: 15px;
+    }
+
+    .metric {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .citation-count {
+      color: var(--primary-color);
+      font-weight: 600;
+    }
+
+    .publications-nav {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .publications-nav button {
+      background-color: var(--light-gray);
+      border: none;
+      padding: 10px 20px;
+      margin: 0 5px;
+      border-radius: var(--button-radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .publications-nav button:hover,
+    .publications-nav button.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    .load-more {
+      display: block;
+      width: 200px;
+      margin: 40px auto 0;
+      padding: 12px 25px;
+      text-align: center;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--button-radius);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .load-more:hover {
+      background-color: var(--accent-color);
+    }
+
+    @media (max-width: 768px) {
+      .publication-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .publication-metrics {
+        margin-top: 10px;
+      }
+
+      .publications-filter {
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>学术成果</h1>
+        <p>浏览我们实验室的顶尖学术研究成果，包括期刊论文、会议发表、专利和开源项目</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>学术成果</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 论文列表 -->
+  <section class="publications-container">
+    <div class="container">
+      <!-- 过滤器 -->
+      <div class="publications-filter">
+        <button class="filter-btn active" data-filter="all">全部成果</button>
+        <button class="filter-btn" data-filter="journal">期刊论文</button>
+        <button class="filter-btn" data-filter="conference">会议论文</button>
+        <button class="filter-btn" data-filter="preprint">预印本</button>
+        <button class="filter-btn" data-filter="book">专著/章节</button>
+        <button class="filter-btn" data-filter="patent">专利</button>
+      </div>
+
+      <!-- 2023年 -->
+      <div class="publications-year">
+        <div class="year-heading">
+          <h2>2023</h2>
+          <div class="year-line"></div>
+        </div>
+
+        <!-- 论文1 -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">PersonaLLM: 整合人格特征的大型语言模型推荐框架</h3>
+          <p class="publication-authors">张三, 李四, 王五, 赵六</p>
+          <span class="publication-venue">ICLR 2023</span>
+          <p class="publication-abstract">
+            本文提出了一种新型个性化推荐框架
+            PersonaLLM，该框架将用户个性特征无缝集成到大型语言模型中，实现高度个性化的内容推荐。通过设计特定的提示工程和微调策略，我们的模型能够理解和利用用户的兴趣、喜好和行为模式，生成符合用户特点的推荐结果。实验表明，与现有方法相比，PersonaLLM
+            在推荐准确性、多样性和用户满意度方面均取得显著提升。
+          </p>
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="#" class="publication-link"><i class="fas fa-globe"></i> 项目主页</a>
+            <a href="#" class="publication-link"><i class="fas fa-video"></i> 演示视频</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">生成式模型</span>
+              <span class="publication-tag">大语言模型</span>
+              <span class="publication-tag">个性化推荐</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">45</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 论文2 -->
+        <div class="publication-card" data-category="journal">
+          <h3 class="publication-title">CausalRec: 基于结构化因果模型的反事实推荐框架</h3>
+          <p class="publication-authors">王五, 张三, 李四</p>
+          <span class="publication-venue">IEEE TKDE 2023</span>
+          <p class="publication-abstract">
+            本文提出了
+            CausalRec，一种基于结构化因果模型的推荐框架，解决传统推荐系统因相关性而非因果关系导致的推荐偏差问题。我们设计了一个通用的因果图结构，显式建模用户行为、项目特征和外部因素之间的因果关系，并引入反事实推理机制，通过假设干预来评估不同推荐策略的效果。实验结果表明，CausalRec
+            能有效减轻选择偏差和流行度偏差，提高推荐结果的多样性和公平性。
+          </p>
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">因果推断</span>
+              <span class="publication-tag">反事实推理</span>
+              <span class="publication-tag">推荐系统</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">28</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 论文3 -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">FairRec: 基于对抗学习的多维公平推荐框架</h3>
+          <p class="publication-authors">李四, 张三, 王五</p>
+          <span class="publication-venue">NeurIPS 2023</span>
+          <p class="publication-abstract">
+            本文提出 FairRec，一种基于对抗学习的多维公平推荐框架，旨在解决推荐系统中的多维度偏见问题。传统公平算法通常只考虑单一敏感属性，而忽略了现实中存在的多维交叉属性带来的复杂歧视。FairRec
+            采用对抗训练策略，同时优化推荐准确性和多个公平性指标，在保持推荐质量的同时显著减轻了算法偏见。广泛的实验证明了该方法在各种数据集上的有效性和泛化能力。
+          </p>
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="#" class="publication-link"><i class="fas fa-globe"></i> 项目主页</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">算法公平性</span>
+              <span class="publication-tag">对抗学习</span>
+              <span class="publication-tag">多目标优化</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">36</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2022年 -->
+      <div class="publications-year">
+        <div class="year-heading">
+          <h2>2022</h2>
+          <div class="year-line"></div>
+        </div>
+
+        <!-- 论文4 -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">GraphRec+: 自适应注意力图神经网络社交推荐框架</h3>
+          <p class="publication-authors">赵六, 王五, 张三, 李四</p>
+          <span class="publication-venue">KDD 2022</span>
+          <p class="publication-abstract">
+            本文提出了 GraphRec+，一种基于自适应注意力机制的图神经网络社交推荐框架。社交推荐系统旨在利用社交关系信息增强推荐效果，但现有方法难以有效捕捉社交影响与用户偏好之间的复杂交互关系。GraphRec+
+            通过设计自适应注意力层，能够智能地为不同的社交关系和用户交互分配重要性权重，同时通过图结构学习技术动态优化社交网络的拓扑结构。实验结果表明，GraphRec+ 在多个社交推荐数据集上取得了最先进的性能。
+          </p>
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">图神经网络</span>
+              <span class="publication-tag">社交推荐</span>
+              <span class="publication-tag">注意力机制</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">72</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 论文5 -->
+        <div class="publication-card" data-category="journal">
+          <h3 class="publication-title">Multi-Interest Learning for Video Recommendation</h3>
+          <p class="publication-authors">张三, 李四, 赵六</p>
+          <span class="publication-venue">ACM TOIS 2022</span>
+          <p class="publication-abstract">
+            本文针对视频推荐系统中的用户多兴趣建模问题提出了一种新颖的解决方案。视频内容的丰富性和多样性使得用户的兴趣通常跨越多个领域，传统的单一向量表示难以捕捉这种复杂性。我们提出的模型通过动态路由机制和多粒度注意力网络，实现了用户多兴趣的自适应表示，并在此基础上设计了一种兴趣感知的视频推荐算法。在多个大规模视频推荐数据集上的实验证明了该方法的有效性和优越性。
+          </p>
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">多兴趣建模</span>
+              <span class="publication-tag">视频推荐</span>
+              <span class="publication-tag">注意力机制</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">53</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 分页 -->
+      <div class="publications-nav">
+        <button class="active">1</button>
+        <button>2</button>
+        <button>3</button>
+        <button><i class="fas fa-ellipsis-h"></i></button>
+        <button>10</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <script>
+    // 论文过滤功能
+    document.addEventListener('DOMContentLoaded', function () {
+      const filterButtons = document.querySelectorAll('.filter-btn');
+      const publicationCards = document.querySelectorAll('.publication-card');
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          // 更新按钮状态
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+
+          // 获取过滤类别
+          const filterValue = this.getAttribute('data-filter');
+
+          // 显示/隐藏相应的论文
+          publicationCards.forEach(card => {
+            if (filterValue === 'all' || card.getAttribute('data-category') === filterValue) {
+              card.style.display = 'block';
+            } else {
+              card.style.display = 'none';
+            }
+          });
+        });
+      });
+
+      // 分页功能
+      const paginationButtons = document.querySelectorAll('.publications-nav button');
+      paginationButtons.forEach(button => {
+        button.addEventListener('click', function () {
+          paginationButtons.forEach(btn => btn.classList.remove('active'));
+          this.classList.add('active');
+          // 这里可以添加实际分页逻辑
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

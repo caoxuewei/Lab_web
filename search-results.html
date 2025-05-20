@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>搜索结果 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* 搜索结果页特有样式 */
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .search-results-container {
+      padding: 60px 0;
+    }
+
+    .search-info {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .search-term {
+      font-weight: 500;
+      color: var(--primary-color);
+    }
+
+    .search-count {
+      display: block;
+      margin-top: 10px;
+      color: var(--dark-gray);
+    }
+
+    .search-form {
+      max-width: 600px;
+      margin: 0 auto 40px;
+      display: flex;
+    }
+
+    .search-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: 1px solid var(--light-gray);
+      border-right: none;
+      border-radius: var(--input-radius) 0 0 var(--input-radius);
+      font-size: 1rem;
+    }
+
+    .search-form button {
+      padding: 12px 20px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 0 var(--button-radius) var(--button-radius) 0;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .search-form button:hover {
+      background-color: var(--accent-color);
+    }
+
+    .search-results {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .result-item {
+      padding: 25px;
+      margin-bottom: 20px;
+      background-color: white;
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .result-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .result-title {
+      font-size: 1.3rem;
+      margin: 0 0 10px;
+    }
+
+    .result-title a {
+      color: var(--primary-color);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .result-title a:hover {
+      color: var(--accent-color);
+    }
+
+    .result-path {
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+      margin-bottom: 10px;
+    }
+
+    .result-path i {
+      margin-right: 5px;
+    }
+
+    .result-excerpt {
+      margin: 0;
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+
+    .result-excerpt em {
+      font-style: normal;
+      font-weight: 500;
+      background-color: rgba(var(--primary-rgb), 0.1);
+      padding: 2px 0;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 40px;
+      background-color: white;
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .no-results h2 {
+      font-size: 1.5rem;
+      margin-bottom: 20px;
+      color: var(--primary-color);
+    }
+
+    .no-results p {
+      margin-bottom: 20px;
+      color: var(--dark-gray);
+    }
+
+    .no-results ul {
+      list-style-type: none;
+      padding: 0;
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .no-results li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+    .no-results li:last-child {
+      border-bottom: none;
+    }
+
+    .no-results i {
+      color: var(--primary-color);
+      margin-right: 10px;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .pagination button {
+      padding: 8px 15px;
+      margin: 0 5px;
+      background-color: white;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--button-radius);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .pagination button.active {
+      background-color: var(--primary-color);
+      color: white;
+      border-color: var(--primary-color);
+    }
+
+    .pagination button:hover:not(.active) {
+      background-color: var(--light-gray);
+    }
+
+    .pagination button.prev,
+    .pagination button.next {
+      padding: 8px 12px;
+    }
+
+    .loading {
+      text-align: center;
+      padding: 40px;
+    }
+
+    .loading-spinner {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      border: 3px solid rgba(var(--primary-rgb), 0.2);
+      border-radius: 50%;
+      border-top-color: var(--primary-color);
+      animation: spin 1s ease-in-out infinite;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>搜索结果</h1>
+        <p>以下是您搜索的结果</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>搜索结果</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 搜索结果区域 -->
+  <section class="search-results-container">
+    <div class="container">
+      <div class="search-info">
+        <h2>搜索结果: <span id="searchTermDisplay" class="search-term"></span></h2>
+        <span id="resultCount" class="search-count"></span>
+      </div>
+
+      <!-- 搜索表单 -->
+      <form id="searchForm" class="search-form">
+        <input type="text" id="searchInput" placeholder="输入关键词搜索...">
+        <button type="submit"><i class="fas fa-search"></i> 搜索</button>
+      </form>
+
+      <!-- 加载动画 -->
+      <div id="loading" class="loading">
+        <div class="loading-spinner"></div>
+        <p>正在搜索...</p>
+      </div>
+
+      <!-- 搜索结果列表 -->
+      <div id="searchResults" class="search-results"></div>
+
+      <!-- 分页导航 -->
+      <div id="pagination" class="pagination"></div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 获取DOM元素
+      const searchTermDisplay = document.getElementById('searchTermDisplay');
+      const resultCount = document.getElementById('resultCount');
+      const searchForm = document.getElementById('searchForm');
+      const searchInput = document.getElementById('searchInput');
+      const searchResults = document.getElementById('searchResults');
+      const loading = document.getElementById('loading');
+      const pagination = document.getElementById('pagination');
+
+      // 模拟网站内容数据（实际应用中可能来自后端API）
+      const siteContent = [
+        {
+          title: '研究实验室 - 首页',
+          path: 'index.html',
+          content: '研究实验室致力于推荐系统、机器学习、人工智能等领域的前沿研究，培养高水平研究人才。我们的研究重点包括推荐系统、深度学习、计算机视觉、自然语言处理等方向。'
+        },
+        {
+          title: '实验室简介',
+          path: 'about.html',
+          content: '研究实验室成立于2010年，是一个专注于人工智能和机器学习研究的学术团队。我们的使命是推动人工智能技术的发展和应用，培养高水平的研究人才，解决实际问题。'
+        },
+        {
+          title: '研究方向',
+          path: 'research.html',
+          content: '我们的主要研究方向包括推荐系统、深度学习、计算机视觉、自然语言处理等。在推荐系统方面，我们研究个性化推荐算法、跨域推荐、序列推荐等；在深度学习方面，我们关注神经网络模型设计、优化技术等。'
+        },
+        {
+          title: '团队成员',
+          path: 'team.html',
+          content: '我们的团队由多位经验丰富的教授、副教授、助理教授、博士后研究员、博士生和硕士生组成。团队成员在各自领域都有深厚的学术积累和研究经验。'
+        },
+        {
+          title: '学术成果',
+          path: 'publications.html',
+          content: '近年来，我们在顶级学术会议和期刊上发表了大量高质量论文，包括但不限于SIGIR、KDD、WWW、AAAI、IJCAI等会议，以及TKDE、TOIS等期刊。'
+        },
+        {
+          title: '招生信息',
+          path: 'admission.html',
+          content: '我们实验室每年招收博士生、硕士生和本科生进行科研训练。我们期待有志于人工智能和机器学习研究的学生加入我们的团队。'
+        },
+        {
+          title: '联系方式',
+          path: 'contact.html',
+          content: '如果您对我们的研究工作感兴趣，或者希望了解更多关于合作机会、招生政策等信息，请随时与我们联系。我们的实验室位于中国某省某市某区某路123号，某大学科研大楼B座305-308室。'
+        }
+      ];
+
+      // 从sessionStorage获取搜索词
+      const searchTerm = sessionStorage.getItem('searchTerm') || '';
+
+      // 在页面上显示搜索词
+      searchTermDisplay.textContent = searchTerm;
+      searchInput.value = searchTerm;
+
+      // 隐藏加载动画
+      loading.style.display = 'none';
+
+      // 处理新的搜索提交
+      searchForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const newSearchTerm = searchInput.value.trim().toLowerCase();
+        if (newSearchTerm.length < 2) {
+          alert('请输入至少2个字符进行搜索');
+          return;
+        }
+
+        // 更新搜索词并重新搜索
+        sessionStorage.setItem('searchTerm', newSearchTerm);
+        searchTermDisplay.textContent = newSearchTerm;
+        performSearch(newSearchTerm);
+      });
+
+      // 执行搜索并显示结果
+      function performSearch (term) {
+        // 显示加载动画
+        loading.style.display = 'block';
+        searchResults.innerHTML = '';
+        pagination.innerHTML = '';
+
+        // 模拟搜索延迟
+        setTimeout(function () {
+          // 搜索逻辑
+          const results = siteContent.filter(item => {
+            return (
+              item.title.toLowerCase().includes(term) ||
+              item.content.toLowerCase().includes(term)
+            );
+          });
+
+          // 更新结果数量
+          resultCount.textContent = `找到 ${results.length} 条结果`;
+
+          // 隐藏加载动画
+          loading.style.display = 'none';
+
+          // 显示搜索结果
+          if (results.length > 0) {
+            displayResults(results, term);
+          } else {
+            displayNoResults();
+          }
+        }, 500); // 模拟500毫秒的搜索时间
+      }
+
+      // 显示搜索结果
+      function displayResults (results, term) {
+        // 清空之前的结果
+        searchResults.innerHTML = '';
+
+        // 为每个结果创建HTML元素
+        results.forEach(result => {
+          const excerptText = getExcerptWithHighlight(result.content, term);
+
+          const resultItem = document.createElement('div');
+          resultItem.className = 'result-item';
+          resultItem.innerHTML = `
+            <h3 class="result-title">
+              <a href="${result.path}">${highlightText(result.title, term)}</a>
+            </h3>
+            <div class="result-path">
+              <i class="fas fa-link"></i> ${result.path}
+            </div>
+            <p class="result-excerpt">${excerptText}</p>
+          `;
+
+          searchResults.appendChild(resultItem);
+        });
+      }
+
+      // 显示无结果提示
+      function displayNoResults () {
+        searchResults.innerHTML = `
+          <div class="no-results">
+            <h2>未找到与 "${searchTermDisplay.textContent}" 相关的结果</h2>
+            <p>建议您：</p>
+            <ul>
+              <li><i class="fas fa-check"></i> 检查您的拼写</li>
+              <li><i class="fas fa-search"></i> 尝试使用不同的关键词</li>
+              <li><i class="fas fa-random"></i> 尝试使用更通用的关键词</li>
+              <li><i class="fas fa-list"></i> 浏览网站导航查找信息</li>
+            </ul>
+          </div>
+        `;
+      }
+
+      // 获取带有高亮的文本摘要
+      function getExcerptWithHighlight (text, term) {
+        const lowerText = text.toLowerCase();
+        const termIndex = lowerText.indexOf(term.toLowerCase());
+
+        if (termIndex === -1) {
+          // 如果没找到匹配项，返回前100个字符
+          return text.substring(0, 100) + '...';
+        }
+
+        // 获取包含搜索词的上下文
+        const contextStart = Math.max(0, termIndex - 40);
+        const contextEnd = Math.min(text.length, termIndex + term.length + 40);
+        let excerpt = text.substring(contextStart, contextEnd);
+
+        // 如果摘录不是从文本开头开始，添加省略号
+        if (contextStart > 0) excerpt = '...' + excerpt;
+
+        // 如果摘录不是在文本结尾结束，添加省略号
+        if (contextEnd < text.length) excerpt = excerpt + '...';
+
+        // 高亮搜索词
+        return highlightText(excerpt, term);
+      }
+
+      // 高亮文本中的搜索词
+      function highlightText (text, term) {
+        if (!term) return text;
+
+        const regex = new RegExp('(' + escapeRegExp(term) + ')', 'gi');
+        return text.replace(regex, '<em>$1</em>');
+      }
+
+      // 转义正则表达式中的特殊字符
+      function escapeRegExp (string) {
+        return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      }
+
+      // 如果有搜索词，执行搜索
+      if (searchTerm) {
+        performSearch(searchTerm);
+      } else {
+        // 如果没有搜索词，显示空结果
+        resultCount.textContent = '请输入搜索词';
+      }
+    });
+  </script>
+</body>
+
+</html>

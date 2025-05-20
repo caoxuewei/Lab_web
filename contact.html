@@ -1,0 +1,724 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>联系方式 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* 联系方式页特有样式 */
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/contact-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .contact-container {
+      padding: 60px 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+    }
+
+    .contact-info h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .contact-info h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .contact-text {
+      margin-bottom: 30px;
+      color: var(--dark-gray);
+      line-height: 1.6;
+    }
+
+    .contact-methods {
+      margin-bottom: 40px;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 25px;
+    }
+
+    .contact-icon {
+      flex: 0 0 50px;
+      height: 50px;
+      background-color: rgba(var(--primary-rgb), 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      margin-right: 20px;
+    }
+
+    .contact-details {
+      flex: 1;
+    }
+
+    .contact-details h3 {
+      margin: 0 0 5px;
+      font-size: 1.1rem;
+    }
+
+    .contact-details p {
+      margin: 0;
+      color: var(--dark-gray);
+    }
+
+    .social-media {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--light-gray);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--dark-gray);
+      font-size: 1.1rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary-color);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .contact-form {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 40px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-title {
+      margin-top: 0;
+      margin-bottom: 25px;
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 12px 15px;
+      border: 1px solid var(--light-gray);
+      border-radius: var(--input-radius);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-control:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    textarea.form-control {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-submit {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: var(--button-radius);
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .form-submit:hover {
+      background-color: var(--accent-color);
+    }
+
+    .map-section {
+      padding: 60px 0;
+      background-color: var(--light-gray);
+    }
+
+    .map-container {
+      height: 450px;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .visit-info {
+      margin-top: 40px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .visit-item {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .visit-icon {
+      width: 60px;
+      height: 60px;
+      background-color: rgba(var(--primary-rgb), 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 15px;
+      color: var(--primary-color);
+      font-size: 1.4rem;
+    }
+
+    .visit-title {
+      margin: 0 0 10px;
+      font-size: 1.2rem;
+    }
+
+    .visit-text {
+      margin: 0;
+      color: var(--dark-gray);
+    }
+
+    .faq-section {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .faq-list {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .faq-item {
+      background-color: white;
+      border-radius: var(--card-radius);
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .faq-question {
+      padding: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background-color: var(--light-gray);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .faq-item.active .faq-answer {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+
+    .faq-toggle {
+      width: 24px;
+      height: 24px;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-toggle::before,
+    .faq-toggle::after {
+      content: '';
+      position: absolute;
+      background-color: var(--primary-color);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s ease;
+    }
+
+    .faq-toggle::before {
+      width: 2px;
+      height: 12px;
+    }
+
+    .faq-toggle::after {
+      width: 12px;
+      height: 2px;
+    }
+
+    .faq-item.active .faq-toggle::before {
+      transform: translate(-50%, -50%) rotate(90deg);
+      opacity: 0;
+    }
+
+    @media (max-width: 992px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-form {
+        margin-top: 40px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>联系方式</h1>
+        <p>欢迎通过以下方式与我们取得联系，了解更多关于实验室的信息</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>联系方式</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 联系信息 -->
+  <section class="contact-container">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h2>联系我们</h2>
+          <p class="contact-text">
+            如果您对我们的研究工作感兴趣，或者希望了解更多关于合作机会、招生政策等信息，请随时与我们联系。我们将尽快回复您的咨询。
+          </p>
+
+          <div class="contact-methods">
+            <!-- 电子邮件 -->
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-details">
+                <h3>电子邮件</h3>
+                <p>info@researchlab.edu.cn</p>
+                <p>admission@researchlab.edu.cn（招生咨询）</p>
+              </div>
+            </div>
+
+            <!-- 电话 -->
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-phone-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>电话</h3>
+                <p>+86 123 4567 8900</p>
+                <p>+86 123 4567 8901（招生办公室）</p>
+              </div>
+            </div>
+
+            <!-- 地址 -->
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-details">
+                <h3>实验室地址</h3>
+                <p>中国某省某市某区某路123号</p>
+                <p>某大学科研大楼B座305-308室</p>
+              </div>
+            </div>
+
+            <!-- 办公时间 -->
+            <div class="contact-method">
+              <div class="contact-icon">
+                <i class="fas fa-clock"></i>
+              </div>
+              <div class="contact-details">
+                <h3>办公时间</h3>
+                <p>周一至周五: 上午 9:00 - 下午 5:30</p>
+                <p>周末和节假日休息</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>关注我们</h3>
+          <div class="social-media">
+            <a href="#" class="social-link" title="微信"><i class="fab fa-weixin"></i></a>
+            <a href="#" class="social-link" title="微博"><i class="fab fa-weibo"></i></a>
+            <a href="#" class="social-link" title="Github"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link" title="知乎"><i class="fab fa-zhihu"></i></a>
+            <a href="#" class="social-link" title="领英"><i class="fab fa-linkedin-in"></i></a>
+          </div>
+        </div>
+
+        <div class="contact-form">
+          <h2 class="form-title">发送消息</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name" class="form-label">姓名</label>
+              <input type="text" id="name" class="form-control" placeholder="请输入您的姓名" required>
+            </div>
+            <div class="form-group">
+              <label for="email" class="form-label">电子邮箱</label>
+              <input type="email" id="email" class="form-control" placeholder="请输入您的电子邮箱" required>
+            </div>
+            <div class="form-group">
+              <label for="subject" class="form-label">主题</label>
+              <input type="text" id="subject" class="form-control" placeholder="请输入消息主题" required>
+            </div>
+            <div class="form-group">
+              <label for="message" class="form-label">消息内容</label>
+              <textarea id="message" class="form-control" placeholder="请输入您的消息内容" required></textarea>
+            </div>
+            <button type="submit" class="form-submit">发送消息</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 地图和访问信息 -->
+  <section class="map-section">
+    <div class="container">
+      <div class="map-container">
+        <!-- 这里替换成实际地图嵌入代码 -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.215770202464!2d116.3912!3d39.9078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMznCsDU0JzI4LjEiTiAxMTbCsDIzJzI4LjMiRQ!5e0!3m2!1szh-CN!2scn!4v1605000000000!5m2!1szh-CN!2scn"
+          allowfullscreen="" loading="lazy"></iframe>
+      </div>
+
+      <div class="visit-info">
+        <!-- 交通信息 -->
+        <div class="visit-item">
+          <div class="visit-icon">
+            <i class="fas fa-bus"></i>
+          </div>
+          <h3 class="visit-title">公共交通</h3>
+          <p class="visit-text">
+            乘坐地铁1号线至大学站下车，从A出口出站，步行约10分钟可到达。
+            或乘坐公交102、305、401路至科研大楼站下车。
+          </p>
+        </div>
+
+        <!-- 停车信息 -->
+        <div class="visit-item">
+          <div class="visit-icon">
+            <i class="fas fa-car"></i>
+          </div>
+          <h3 class="visit-title">停车信息</h3>
+          <p class="visit-text">
+            校内设有访客停车场，位于科研大楼南侧。停车需提前预约并在门卫处登记。
+          </p>
+        </div>
+
+        <!-- 校园指南 -->
+        <div class="visit-item">
+          <div class="visit-icon">
+            <i class="fas fa-map"></i>
+          </div>
+          <h3 class="visit-title">校园指南</h3>
+          <p class="visit-text">
+            我们的实验室位于科研大楼B座3层。访客可在大厅前台登记后前往。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 常见问题 -->
+  <section class="faq-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>常见问题</h2>
+        <p>以下是访客经常咨询的问题及答案，希望对您有所帮助</p>
+      </div>
+
+      <div class="faq-list">
+        <!-- 问题1 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <div>如何申请加入你们的研究团队？</div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            <p>申请加入我们的研究团队，请先查看"招生信息"页面了解申请要求和流程。博士生和硕士生需通过学校研究生招生系统申请，并同时发送申请材料至实验室招生邮箱。本科生可直接联系导师申请加入实验室进行科研训练。</p>
+          </div>
+        </div>
+
+        <!-- 问题2 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <div>你们实验室是否提供远程合作机会？</div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            <p>是的，我们欢迎与国内外高校、研究机构和企业的远程合作。如果您有合作意向，请发送详细合作提案至我们的邮箱，我们会尽快回复并安排进一步讨论。</p>
+          </div>
+        </div>
+
+        <!-- 问题3 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <div>如何获取你们实验室的开源代码和数据集？</div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            <p>我们的大部分研究成果都在GitHub上开源，您可以访问我们的GitHub组织页面获取代码。部分公开数据集可以通过我们的官网"资源"页面下载，部分需要填写申请表并签署使用协议后获取。</p>
+          </div>
+        </div>
+
+        <!-- 问题4 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <div>实验室是否接收访问学者？</div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            <p>是的，我们欢迎国内外高校和研究机构的学者来我们实验室进行短期或长期访问。如需申请，请提前3个月发送您的个人简历、研究计划和访问时间至实验室邮箱。</p>
+          </div>
+        </div>
+
+        <!-- 问题5 -->
+        <div class="faq-item">
+          <div class="faq-question">
+            <div>实验室是否提供实习机会？</div>
+            <div class="faq-toggle"></div>
+          </div>
+          <div class="faq-answer">
+            <p>我们定期为本科生和硕士生提供实习机会，通常在寒暑假期间。实习信息会在"新闻动态"页面和社交媒体上发布，感兴趣的学生可以按照要求提交申请。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+  <script>
+    // FAQ 折叠功能
+    document.addEventListener('DOMContentLoaded', function () {
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach(item => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', function () {
+          // 关闭其他已打开的FAQ项
+          faqItems.forEach(otherItem => {
+            if (otherItem !== item && otherItem.classList.contains('active')) {
+              otherItem.classList.remove('active');
+            }
+          });
+
+          // 切换当前项的状态
+          item.classList.toggle('active');
+        });
+      });
+    });
+  </script>
+</body>
+
+</html>

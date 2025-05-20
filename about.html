@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>实验室简介 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* 实验室简介页特有样式 */
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/about-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .about-section {
+      padding: 60px 0;
+    }
+
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about-text {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .about-image img {
+      border-radius: var(--card-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .about-text h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .about-text h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .milestone-section {
+      background-color: var(--light-gray);
+      padding: 60px 0;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 1000px;
+      margin: 40px auto 0;
+      padding: 20px 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 2px;
+      background-color: var(--primary-color);
+      transform: translateX(-50%);
+    }
+
+    .milestone {
+      position: relative;
+      margin-bottom: 50px;
+    }
+
+    .milestone:last-child {
+      margin-bottom: 0;
+    }
+
+    .milestone-content {
+      position: relative;
+      width: 45%;
+      padding: 20px;
+      background-color: var(--light-color);
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .milestone:nth-child(odd) .milestone-content {
+      margin-left: auto;
+    }
+
+    .milestone::before {
+      content: '';
+      position: absolute;
+      top: 20px;
+      width: 16px;
+      height: 16px;
+      background-color: var(--light-color);
+      border: 3px solid var(--primary-color);
+      border-radius: 50%;
+      z-index: 1;
+    }
+
+    .milestone:nth-child(odd)::before {
+      left: calc(50% - 11px);
+    }
+
+    .milestone:nth-child(even)::before {
+      right: calc(50% - 11px);
+    }
+
+    .milestone-year {
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: 10px;
+    }
+
+    .milestone-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .mission-section {
+      padding: 60px 0;
+    }
+
+    .mission-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+    .mission-card {
+      padding: 30px;
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      background-color: var(--light-color);
+      text-align: center;
+    }
+
+    .mission-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .mission-icon {
+      font-size: 2.5rem;
+      color: var(--primary-color);
+      margin-bottom: 20px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mission-card h3 {
+      margin-bottom: 15px;
+    }
+
+    .partner-section {
+      background-color: var(--light-gray);
+      padding: 60px 0;
+    }
+
+    .partner-logos {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .partner-logo {
+      background-color: var(--light-color);
+      padding: 20px;
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      width: 200px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+    }
+
+    .partner-logo:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .partner-logo img {
+      max-width: 100%;
+      max-height: 60px;
+      filter: grayscale(100%);
+      transition: filter 0.3s ease;
+    }
+
+    .partner-logo:hover img {
+      filter: grayscale(0%);
+    }
+
+    @media (max-width: 768px) {
+      .timeline::before {
+        left: 30px;
+      }
+
+      .milestone-content {
+        width: calc(100% - 60px);
+        margin-left: 60px !important;
+      }
+
+      .milestone::before {
+        left: 22px !important;
+        right: auto !important;
+      }
+
+      .about-content {
+        flex-direction: column-reverse;
+      }
+
+      .about-text,
+      .about-image {
+        flex: 1 1 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>实验室简介</h1>
+        <p>了解我们实验室的发展历程、使命与愿景</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>实验室简介</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 关于我们 -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>我们的实验室</h2>
+          <p>SPIN Lab成立于2010年，是国内外知名的推荐系统和人工智能研究团队之一。实验室依托于计算机科学与技术学院，聚焦于推荐系统、机器学习、数据挖掘等领域的前沿研究。</p>
+          <p>经过多年的发展，我们已经建立了一支由教授、副教授、博士后、博士生和硕士生组成的高水平研究团队。团队成员在顶级国际会议和期刊上发表了大量高质量论文，包括ICLR、NeurIPS、KDD、WWW、SIGIR等。</p>
+          <p>我们与多家知名企业和研究机构保持密切合作，共同推动推荐系统技术的创新与发展。我们致力于解决实际应用中的关键问题，推动理论研究与工业应用的结合。</p>
+        </div>
+        <div class="about-image">
+          <img src="images/about-1.jpg" alt="实验室照片">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 发展历程 -->
+  <section class="milestone-section">
+    <div class="container">
+      <h2 class="section-title">发展历程</h2>
+      <div class="timeline">
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2010年</div>
+            <h3>实验室成立</h3>
+            <p>由张教授领导，SPIN Lab正式成立，开始专注于推荐系统研究。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2013年</div>
+            <h3>首次国际合作</h3>
+            <p>与美国斯坦福大学建立合作关系，开展联合研究项目。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2015年</div>
+            <h3>首篇顶会论文</h3>
+            <p>团队成员在KDD会议上发表论文，获得广泛关注。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2018年</div>
+            <h3>获国家重点研发计划</h3>
+            <p>牵头承担国家重点研发计划项目，研究规模进一步扩大。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2020年</div>
+            <h3>成果转化</h3>
+            <p>多项研究成果成功转化为产品，与多家知名企业合作。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2022年</div>
+            <h3>学术影响力提升</h3>
+            <p>团队成员在ICLR、NeurIPS等顶级会议发表多篇论文，学术影响力进一步提升。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 使命与愿景 -->
+  <section class="mission-section">
+    <div class="container">
+      <h2 class="section-title">使命与愿景</h2>
+      <div class="mission-cards">
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-lightbulb"></i>
+          </div>
+          <h3>我们的使命</h3>
+          <p>以创新思维推动推荐系统及人工智能领域的技术发展，解决实际应用中的关键问题，培养具有国际竞争力的高水平研究人才。</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-eye"></i>
+          </div>
+          <h3>我们的愿景</h3>
+          <p>成为国际知名的推荐系统研究中心，引领前沿技术研究方向，推动学术交流与产业合作，为人工智能的发展贡献力量。</p>
+        </div>
+        <div class="mission-card">
+          <div class="mission-icon">
+            <i class="fas fa-handshake"></i>
+          </div>
+          <h3>我们的价值观</h3>
+          <p>坚持创新、协作、开放、责任的价值观，追求学术卓越，重视技术伦理，致力于可持续发展。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究理念 -->
+  <section class="about-section">
+    <div class="container">
+      <div class="about-content">
+        <div class="about-image">
+          <img src="images/about-2.jpg" alt="研究环境">
+        </div>
+        <div class="about-text">
+          <h2>研究理念</h2>
+          <p>我们秉持"研究源于实际问题，技术服务于社会发展"的理念，强调理论与实践的结合，注重研究工作的原创性与实用性。</p>
+          <p>我们鼓励团队成员勇于挑战前沿难题，推动开放合作，促进学科交叉研究。我们特别关注推荐系统中的公平性、可解释性、隐私保护等问题，致力于发展负责任的人工智能技术。</p>
+          <p>同时，我们重视人才培养，为研究生提供国际化的学术环境和丰富的研究资源，培养他们的创新能力和团队协作精神。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 合作伙伴 -->
+  <section class="partner-section">
+    <div class="container">
+      <h2 class="section-title">合作伙伴</h2>
+      <div class="partner-logos">
+        <div class="partner-logo">
+          <img src="images/partner-1.png" alt="合作伙伴">
+        </div>
+        <div class="partner-logo">
+          <img src="images/partner-2.png" alt="合作伙伴">
+        </div>
+        <div class="partner-logo">
+          <img src="images/partner-3.png" alt="合作伙伴">
+        </div>
+        <div class="partner-logo">
+          <img src="images/partner-4.png" alt="合作伙伴">
+        </div>
+        <div class="partner-logo">
+          <img src="images/partner-5.png" alt="合作伙伴">
+        </div>
+        <div class="partner-logo">
+          <img src="images/partner-6.png" alt="合作伙伴">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

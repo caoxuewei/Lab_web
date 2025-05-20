@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>研究方向 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* 研究方向页特有样式 */
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/research-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .research-section {
+      padding: 80px 0;
+    }
+
+    .research-section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    .research-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .research-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .research-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .research-image img {
+      max-width: 100%;
+      border-radius: var(--card-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .research-section:nth-child(odd) .research-container {
+      flex-direction: row-reverse;
+    }
+
+    .research-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .research-content h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .research-section:nth-child(odd) .research-content h2::after {
+      left: 0;
+    }
+
+    .research-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .key-points {
+      margin: 2rem 0;
+    }
+
+    .key-points h3 {
+      margin-bottom: 1rem;
+    }
+
+    .key-points ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .key-points li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 0.8rem;
+    }
+
+    .key-points li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent-color);
+    }
+
+    .publication-highlight {
+      margin-top: 2rem;
+      padding: 20px;
+      background-color: var(--light-color);
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .publication-highlight h3 {
+      margin-bottom: 1rem;
+    }
+
+    .publication-highlight p {
+      font-style: italic;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+
+    .publication-highlight .authors {
+      font-weight: 500;
+    }
+
+    .publication-highlight .venue {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .publication-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .publication-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--primary-color);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 15px;
+      background-color: var(--light-gray);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+    }
+
+    @media (max-width: 768px) {
+      .research-container {
+        flex-direction: column-reverse !important;
+      }
+
+      .research-content,
+      .research-image {
+        flex: 1 1 100%;
+      }
+
+      .research-image {
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>研究方向</h1>
+        <p>探索我们实验室的前沿科研领域和创新项目</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>研究方向</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 生成式推荐系统 -->
+  <section id="generative" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>生成式推荐系统</h2>
+          <p>生成式推荐系统是我们实验室的核心研究方向之一，它结合了生成模型与传统推荐系统的优势，能够生成个性化的内容推荐，提升用户体验和推荐多样性。</p>
+          <p>通过深度学习和生成模型（如变分自编码器、生成对抗网络和大型语言模型），我们的研究旨在解决传统推荐系统中的冷启动问题、数据稀疏性问题，以及推荐多样性不足等挑战。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>基于大型语言模型的对话式推荐系统</li>
+              <li>生成模型增强的协同过滤算法</li>
+              <li>多模态内容生成与推荐</li>
+              <li>个性化文本生成推荐</li>
+              <li>生成式推荐系统的可解释性</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"PersonaLLM: 整合人格特征的大型语言模型推荐框架"</p>
+            <p class="authors">张三, 李四, 王五, 赵六</p>
+            <p class="venue">ICLR 2023</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">生成式模型</span>
+            <span class="tag">深度学习</span>
+            <span class="tag">个性化推荐</span>
+            <span class="tag">大语言模型</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/generative-recsys.jpg" alt="生成式推荐系统">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 公平推荐系统 -->
+  <section id="fairness" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>公平推荐系统</h2>
+          <p>随着人工智能技术在推荐系统中的广泛应用，算法公平性已成为一个日益重要的研究课题。我们的研究聚焦于设计和开发更加公平、无歧视的推荐技术，平衡不同群体的利益。</p>
+          <p>我们从多角度研究推荐系统中的公平性问题，包括用户公平、物品公平以及提供者公平等，致力于减轻算法偏见对用户体验和社会价值的负面影响。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>公平性指标的设计与评估</li>
+              <li>无偏数据收集与建模方法</li>
+              <li>多目标优化的公平推荐框架</li>
+              <li>群体公平与个体公平平衡机制</li>
+              <li>公平与准确性权衡的理论基础</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"FairRec: 基于对抗学习的多维公平推荐框架"</p>
+            <p class="authors">李四, 张三, 王五</p>
+            <p class="venue">NeurIPS 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">算法公平性</span>
+            <span class="tag">对抗学习</span>
+            <span class="tag">偏见缓解</span>
+            <span class="tag">伦理AI</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/fairness-recsys.jpg" alt="公平推荐系统">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 因果推荐系统 -->
+  <section id="causal" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>因果推荐系统</h2>
+          <p>传统的基于相关性的推荐系统在处理数据偏差和用户反馈循环方面存在固有局限。我们实验室的因果推荐系统研究方向致力于应用因果推断方法，解决推荐系统中的选择偏差、反事实推理和干预效应估计等问题。</p>
+          <p>通过因果推断框架，我们能够区分关联与因果关系，改进推荐结果的质量和稳健性，同时为推荐决策提供更可靠的解释。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>基于因果图的推荐系统建模</li>
+              <li>反事实推理增强的用户偏好学习</li>
+              <li>去偏策略优化与评估</li>
+              <li>因果表示学习在推荐中的应用</li>
+              <li>因果发现与推荐系统的结合</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"CausalRec: 基于结构化因果模型的反事实推荐框架"</p>
+            <p class="authors">王五, 张三, 李四</p>
+            <p class="venue">SIGIR 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">因果推断</span>
+            <span class="tag">反事实推理</span>
+            <span class="tag">选择偏差</span>
+            <span class="tag">干预效应</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/causal-recsys.jpg" alt="因果推荐系统">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 图神经网络 -->
+  <section id="gnn" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>图神经网络</h2>
+          <p>在推荐系统中，用户与物品之间的交互自然形成图结构，图神经网络（GNN）为建模这些复杂关系提供了强大的工具。我们的研究探索图神经网络在社交推荐和知识图谱增强推荐中的应用。</p>
+          <p>通过捕捉图中的高阶连接模式和局部结构特征，我们开发的GNN模型能够更好地表示用户偏好和物品特性，提升推荐系统的性能和可解释性。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>异构图神经网络的推荐模型</li>
+              <li>基于知识图谱的推荐增强</li>
+              <li>社交网络感知的图卷积推荐</li>
+              <li>图自监督学习在推荐中的应用</li>
+              <li>高效大规模图推荐系统</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"GraphRec+: 自适应注意力图神经网络社交推荐框架"</p>
+            <p class="authors">赵六, 王五, 张三, 李四</p>
+            <p class="venue">KDD 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">图神经网络</span>
+            <span class="tag">社交推荐</span>
+            <span class="tag">知识图谱</span>
+            <span class="tag">图结构学习</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/gnn-recsys.jpg" alt="图神经网络">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

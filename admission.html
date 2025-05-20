@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>招生信息 - SPIN Lab</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    .page-header {
+      background-color: var(--light-gray);
+      padding: 120px 0 60px;
+      text-align: center;
+      position: relative;
+    }
+
+    .page-header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('images/admission-bg.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.1;
+      z-index: 1;
+    }
+
+    .page-header-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .page-header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .page-header p {
+      max-width: 800px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .breadcrumb {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 2rem 0 0;
+    }
+
+    .breadcrumb li {
+      display: flex;
+      align-items: center;
+    }
+
+    .breadcrumb li:not(:last-child)::after {
+      content: '\f054';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      margin: 0 10px;
+      font-size: 0.8rem;
+      color: var(--dark-gray);
+    }
+
+    .admission-section {
+      padding: 60px 0;
+    }
+
+    .admission-section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title h2::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .section-title p {
+      max-width: 700px;
+      margin: 0 auto;
+      color: var(--dark-gray);
+    }
+
+    .programs-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 50px;
+    }
+
+    .program-card {
+      background-color: white;
+      border-radius: var(--card-radius);
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .program-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .program-header {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .program-header h3 {
+      margin: 0;
+      font-size: 1.3rem;
+    }
+
+    .program-content {
+      padding: 25px;
+    }
+
+    .program-content ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 20px;
+    }
+
+    .program-content li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 15px;
+    }
+
+    .program-content li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent-color);
+    }
+
+    .requirements-list {
+      margin-bottom: 50px;
+    }
+
+    .requirement-item {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 25px;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .requirement-title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+
+    .requirement-title i {
+      margin-right: 15px;
+      font-size: 1.5rem;
+    }
+
+    .requirement-title h3 {
+      margin: 0;
+      font-size: 1.2rem;
+    }
+
+    .application-steps {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto 50px;
+    }
+
+    .step-line {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 25px;
+      width: 2px;
+      background-color: var(--primary-color);
+      z-index: 1;
+    }
+
+    .step-item {
+      position: relative;
+      padding-left: 70px;
+      margin-bottom: 40px;
+      z-index: 2;
+    }
+
+    .step-number {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    .step-content {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .step-content h3 {
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    .step-content p {
+      margin: 0;
+      color: var(--dark-gray);
+    }
+
+    .key-dates {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .date-line {
+      position: absolute;
+      top: 20px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: var(--primary-color);
+      z-index: 1;
+    }
+
+    .date-items {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+      z-index: 2;
+    }
+
+    .date-item {
+      text-align: center;
+      width: 120px;
+    }
+
+    .date-marker {
+      width: 40px;
+      height: 40px;
+      background-color: var(--primary-color);
+      border-radius: 50%;
+      margin: 0 auto 15px;
+    }
+
+    .date-content h4 {
+      margin: 0 0 5px;
+      font-size: 1rem;
+    }
+
+    .date-content p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--dark-gray);
+    }
+
+    .contact-info {
+      background-color: white;
+      border-radius: var(--card-radius);
+      padding: 25px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+      margin-top: 50px;
+    }
+
+    .contact-header {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .contact-methods {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background-color: rgba(var(--primary-rgb), 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--primary-color);
+      font-size: 1.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .programs-container {
+        grid-template-columns: 1fr;
+      }
+
+      .date-items {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+      }
+
+      .date-line {
+        display: none;
+      }
+
+      .date-item {
+        width: 100%;
+        text-align: left;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .date-marker {
+        margin: 0;
+      }
+
+      .contact-methods {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <div class="container">
+      <div class="page-header-content">
+        <h1>招生信息</h1>
+        <p>欢迎优秀学生加入我们的研究团队，共同探索推荐系统和机器学习的前沿研究</p>
+        <ul class="breadcrumb">
+          <li><a href="index.html">首页</a></li>
+          <li>招生信息</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- 招生项目 -->
+  <section class="admission-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>招生项目</h2>
+        <p>我们实验室提供多种学位项目，欢迎优秀学生申请加入我们的研究团队</p>
+      </div>
+
+      <div class="programs-container">
+        <!-- 博士项目 -->
+        <div class="program-card">
+          <div class="program-header">
+            <h3>博士研究生</h3>
+          </div>
+          <div class="program-content">
+            <ul>
+              <li>全日制博士研究生项目</li>
+              <li>学制3-5年</li>
+              <li>每年提供全额奖学金</li>
+              <li>参与国际顶级会议和期刊论文发表</li>
+              <li>有机会参与国际交流和企业实习</li>
+            </ul>
+            <a href="#application" class="btn">申请流程</a>
+          </div>
+        </div>
+
+        <!-- 硕士项目 -->
+        <div class="program-card">
+          <div class="program-header">
+            <h3>硕士研究生</h3>
+          </div>
+          <div class="program-content">
+            <ul>
+              <li>全日制硕士研究生项目</li>
+              <li>学制2-3年</li>
+              <li>提供奖学金和助研机会</li>
+              <li>参与高水平会议和期刊论文发表</li>
+              <li>有机会继续攻读博士学位</li>
+            </ul>
+            <a href="#application" class="btn">申请流程</a>
+          </div>
+        </div>
+
+        <!-- 本科生项目 -->
+        <div class="program-card">
+          <div class="program-header">
+            <h3>本科生科研</h3>
+          </div>
+          <div class="program-content">
+            <ul>
+              <li>面向高年级本科生的科研训练</li>
+              <li>参与实验室实际研究项目</li>
+              <li>提供本科生科研奖励计划</li>
+              <li>优秀者可推荐攻读研究生</li>
+              <li>培养学术研究和创新能力</li>
+            </ul>
+            <a href="#application" class="btn">申请流程</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 申请要求 -->
+  <section class="admission-section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <div class="section-title">
+        <h2>申请要求</h2>
+        <p>我们期待具有扎实专业基础和研究热情的优秀学生加入我们的团队</p>
+      </div>
+
+      <div class="requirements-list">
+        <!-- 学术背景 -->
+        <div class="requirement-item">
+          <div class="requirement-title">
+            <i class="fas fa-graduation-cap"></i>
+            <h3>学术背景</h3>
+          </div>
+          <p>计算机科学、人工智能、数据科学、应用数学或相关专业背景，具有扎实的编程和数学基础。博士申请者需具有相关领域的硕士学位或同等研究经历。</p>
+        </div>
+
+        <!-- 研究经验 -->
+        <div class="requirement-item">
+          <div class="requirement-title">
+            <i class="fas fa-flask"></i>
+            <h3>研究经验</h3>
+          </div>
+          <p>博士申请者需具有相关研究经验，并有发表高质量论文的记录。硕士申请者应有一定的科研经历或项目实践经验。本科生应具有良好的学习成绩和科研潜力。</p>
+        </div>
+
+        <!-- 专业技能 -->
+        <div class="requirement-item">
+          <div class="requirement-title">
+            <i class="fas fa-code"></i>
+            <h3>专业技能</h3>
+          </div>
+          <p>熟练掌握Python、Java等编程语言，了解深度学习框架如PyTorch或TensorFlow，具备数据分析和机器学习基础知识。了解推荐系统、自然语言处理或图神经网络等相关领域为佳。</p>
+        </div>
+
+        <!-- 语言能力 -->
+        <div class="requirement-item">
+          <div class="requirement-title">
+            <i class="fas fa-language"></i>
+            <h3>语言能力</h3>
+          </div>
+          <p>良好的中英文读写和交流能力，能够阅读英文文献，撰写英文论文，参与国际学术交流。国际学生需提供语言能力证明。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 申请流程 -->
+  <section id="application" class="admission-section">
+    <div class="container">
+      <div class="section-title">
+        <h2>申请流程</h2>
+        <p>按照以下步骤申请加入我们的研究团队</p>
+      </div>
+
+      <div class="application-steps">
+        <div class="step-line"></div>
+
+        <!-- 步骤1 -->
+        <div class="step-item">
+          <div class="step-number">1</div>
+          <div class="step-content">
+            <h3>提交申请材料</h3>
+            <p>通过学校研究生招生系统提交申请，包括个人简历、成绩单、研究计划、代表性论文或项目（如有）以及推荐信。请在研究计划中明确表示有意加入我们实验室。</p>
+          </div>
+        </div>
+
+        <!-- 步骤2 -->
+        <div class="step-item">
+          <div class="step-number">2</div>
+          <div class="step-content">
+            <h3>联系导师</h3>
+            <p>发送邮件给实验室导师，介绍自己的研究兴趣和背景，附上简历和研究计划。建议在邮件主题中注明"研究生申请"字样。</p>
+          </div>
+        </div>
+
+        <!-- 步骤3 -->
+        <div class="step-item">
+          <div class="step-number">3</div>
+          <div class="step-content">
+            <h3>面试</h3>
+            <p>初步筛选后，我们将邀请合适的候选人参加面试。面试内容包括专业知识考核、研究能力评估以及英语水平测试。面试可能以现场或线上方式进行。</p>
+          </div>
+        </div>
+
+        <!-- 步骤4 -->
+        <div class="step-item">
+          <div class="step-number">4</div>
+          <div class="step-content">
+            <h3>录取通知</h3>
+            <p>面试通过后，我们将向成功的申请者发出录取通知，并提供相关奖学金和资助信息。请按照通知要求在规定时间内确认入学意向。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 重要日期 -->
+  <section class="admission-section" style="background-color: var(--light-gray);">
+    <div class="container">
+      <div class="section-title">
+        <h2>重要日期</h2>
+        <p>请注意以下招生关键时间节点</p>
+      </div>
+
+      <div class="key-dates">
+        <div class="date-line"></div>
+        <div class="date-items">
+          <!-- 日期1 -->
+          <div class="date-item">
+            <div class="date-marker"></div>
+            <div class="date-content">
+              <h4>申请开放</h4>
+              <p>11月15日</p>
+            </div>
+          </div>
+
+          <!-- 日期2 -->
+          <div class="date-item">
+            <div class="date-marker"></div>
+            <div class="date-content">
+              <h4>申请截止</h4>
+              <p>1月15日</p>
+            </div>
+          </div>
+
+          <!-- 日期3 -->
+          <div class="date-item">
+            <div class="date-marker"></div>
+            <div class="date-content">
+              <h4>面试通知</h4>
+              <p>2月15日</p>
+            </div>
+          </div>
+
+          <!-- 日期4 -->
+          <div class="date-item">
+            <div class="date-marker"></div>
+            <div class="date-content">
+              <h4>面试</h4>
+              <p>3月1-15日</p>
+            </div>
+          </div>
+
+          <!-- 日期5 -->
+          <div class="date-item">
+            <div class="date-marker"></div>
+            <div class="date-content">
+              <h4>录取通知</h4>
+              <p>4月1日</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-header">
+          <h3>联系方式</h3>
+          <p>如有问题，请通过以下方式联系我们</p>
+        </div>
+        <div class="contact-methods">
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-envelope"></i>
+            </div>
+            <div>
+              <h4>招生邮箱</h4>
+              <p>admission@lab.edu.cn</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-phone"></i>
+            </div>
+            <div>
+              <h4>招生电话</h4>
+              <p>+86 123 4567 8901</p>
+            </div>
+          </div>
+          <div class="contact-method">
+            <div class="contact-icon">
+              <i class="fas fa-building"></i>
+            </div>
+            <div>
+              <h4>招生办公室</h4>
+              <p>科研大楼B座306室</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>

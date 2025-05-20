@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SPIN Lab - 官方网站</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- Font Awesome 图标库 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <!-- 谷歌字体 -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+  <!-- 导航栏 -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <h1>SPIN Lab</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul>
+          <li><a href="index.html" class="active">首页</a></li>
+          <li><a href="about.html">实验室简介</a></li>
+          <li><a href="research.html">研究方向</a></li>
+          <li><a href="team.html">团队成员</a></li>
+          <li><a href="publications.html">学术成果</a></li>
+          <li><a href="admission.html">招生信息</a></li>
+          <li><a href="contact.html">联系方式</a></li>
+        </ul>
+      </nav>
+      <div class="menu-toggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="search-box">
+        <input type="text" placeholder="搜索...">
+        <button type="submit"><i class="fas fa-search"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- 焦点区域 - 轮播图 -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-slider">
+        <div class="slide active">
+          <div class="slide-content">
+            <h2>欢迎访问SPIN Lab</h2>
+            <p>
+              SPIN Lab聚焦于人工智能（AI）与具身智能的前沿研究，致力于探索能够在物理世界中感知、决策并执行复杂任务的智能体理论与技术。实验室依托中国科学技术大学的交叉学科优势，
+              汇聚了由夏彦教授领衔的跨学科团队，成员涵盖计算机视觉、机器人学、强化学习、认知科学等领域的研究者与开发者。
+            </p>
+            <a href="about.html" class="btn">了解更多</a>
+          </div>
+          <div class="slide-image">
+            <img src="images/shiyanshi.jpg " alt="实验室全景">
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-content">
+            <h2>重大研究成果</h2>
+            <p>实验室的核心研究方向包括：多模态感知与环境建模、具身智能体决策机制、人机协作与物理交互、具身智能应用场景开发，智能家居服务、工业自动化、机器人导航与控制等。</p>
+            <a href="publications.html" class="btn">查看论文</a>
+          </div>
+          <div class="slide-image">
+            <img src="images/shiyanshi2.jpg" alt="研究成果">
+          </div>
+        </div>
+        <div class="slide">
+          <div class="slide-content">
+            <h2>招募优秀人才</h2>
+            <p>我们以 “让智能体真正理解并作用于物理世界”为使命，注重理论创新与硬件落地结合 ，拥有先进的实验平台和开源生态）。
+              并欢迎企业与学界以联合研发、技术咨询等形式开展合作，共同推动具身智能从实验室走向真实世界。欢迎有志于机器人学 / 人工智能方向优秀的本科、硕士、博士生，加入我们的团队</p>
+            <a href="admission.html" class="btn">招生详情</a>
+          </div>
+          <div class="slide-image">
+            <img src="images/shiyanshi3.jpg" alt="团队合作">
+          </div>
+        </div>
+        <button class="slider-prev"><i class="fas fa-chevron-left"></i></button>
+        <button class="slider-next"><i class="fas fa-chevron-right"></i></button>
+      </div>
+      <div class="slider-controls">
+        <span class="control active" data-slide="0"></span>
+        <span class="control" data-slide="1"></span>
+        <span class="control" data-slide="2"></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- 最新动态 -->
+  <section class="latest-news">
+    <div class="container">
+      <h2 class="section-title">最新动态</h2>
+      <div class="news-grid">
+        <div class="news-item featured">
+          <div class="news-image">
+            <img src="images/news.jpg" alt="新闻动态">
+            <div class="news-date">
+              <span class="day">15</span>
+              <span class="month">6月</span>
+              <span class="year">2023</span>
+            </div>
+          </div>
+          <div class="news-content">
+            <span class="badge">重要通知</span>
+            <h3>我们的论文被ICLR 2023接收</h3>
+            <p>恭喜团队成员在生成式推荐系统领域的研究成果被ICLR 2023会议接收！</p>
+            <a href="news-detail.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-image">
+            <img src="images/news.jpg" alt="新闻动态">
+            <div class="news-date">
+              <span class="day">10</span>
+              <span class="month">5月</span>
+              <span class="year">2023</span>
+            </div>
+          </div>
+          <div class="news-content">
+            <span class="badge">学术活动</span>
+            <h3>实验室成功举办学术研讨会</h3>
+            <p>我们实验室成功举办了"前沿推荐系统技术"专题研讨会，多位专家学者参与...</p>
+            <a href="news-detail.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+        <div class="news-item">
+          <div class="news-image">
+            <img src="images/news.jpg" alt="新闻动态">
+            <div class="news-date">
+              <span class="day">25</span>
+              <span class="month">4月</span>
+              <span class="year">2023</span>
+            </div>
+          </div>
+          <div class="news-content">
+            <span class="badge">项目进展</span>
+            <h3>国家自然科学基金项目启动</h3>
+            <p>我们的"基于因果推断的公平推荐系统"国家自然科学基金项目正式启动...</p>
+            <a href="news-detail.html" class="read-more">阅读更多 <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="view-all-container">
+        <a href="news.html" class="btn btn-outline">查看全部新闻</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究方向 -->
+  <section class="research-areas">
+    <div class="container">
+      <h2 class="section-title">研究方向</h2>
+      <div class="areas-grid">
+        <div class="area-card">
+          <div class="area-icon">
+            <i class="fas fa-robot"></i>
+          </div>
+          <h3>生成式推荐系统</h3>
+          <p>结合生成模型与推荐系统，研究个性化内容生成与推荐的创新方法。</p>
+          <a href="research.html#generative" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">
+            <i class="fas fa-balance-scale"></i>
+          </div>
+          <h3>公平推荐系统</h3>
+          <p>研究算法偏见问题，开发更加公平、无歧视的推荐技术。</p>
+          <a href="research.html#fairness" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3>因果推荐系统</h3>
+          <p>应用因果推断方法解决推荐系统中的选择偏差和反事实推理问题。</p>
+          <a href="research.html#causal" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="area-card">
+          <div class="area-icon">
+            <i class="fas fa-network-wired"></i>
+          </div>
+          <h3>图神经网络</h3>
+          <p>探索图神经网络在社交推荐和知识图谱增强推荐中的应用。</p>
+          <a href="research.html#gnn" class="read-more">了解更多 <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 学术成果 -->
+  <section class="publications-highlight">
+    <div class="container">
+      <h2 class="section-title">代表性学术成果</h2>
+      <div class="publication-tabs">
+        <div class="tab-headers">
+          <span class="tab active" data-tab="recent">最新论文</span>
+          <span class="tab" data-tab="top">顶会论文</span>
+          <span class="tab" data-tab="projects">研究项目</span>
+        </div>
+        <div class="tab-content">
+          <div class="tab-pane active" id="recent">
+            <ul class="publication-list">
+              <li>
+                <div class="pub-info">
+                  <span class="pub-venue">ICLR 2023</span>
+                  <h4>生成式推荐系统的新方法与应用</h4>
+                  <p class="pub-authors">张三, 李四, 王五, 赵六</p>
+                  <div class="pub-links">
+                    <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="pub-link"><i class="fab fa-github"></i> 代码</a>
+                    <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+                  </div>
+                </div>
+                <div class="pub-tags">
+                  <span class="tag">生成式模型</span>
+                  <span class="tag">推荐系统</span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-info">
+                  <span class="pub-venue">NeurIPS 2022</span>
+                  <h4>基于因果推断的公平推荐方法研究</h4>
+                  <p class="pub-authors">李四, 张三, 王五</p>
+                  <div class="pub-links">
+                    <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="pub-link"><i class="fab fa-github"></i> 代码</a>
+                    <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+                  </div>
+                </div>
+                <div class="pub-tags">
+                  <span class="tag">因果推断</span>
+                  <span class="tag">公平性</span>
+                </div>
+              </li>
+              <li>
+                <div class="pub-info">
+                  <span class="pub-venue">KDD 2022</span>
+                  <h4>图神经网络在社交推荐中的应用</h4>
+                  <p class="pub-authors">王五, 张三, 李四, 赵六</p>
+                  <div class="pub-links">
+                    <a href="#" class="pub-link"><i class="fas fa-file-pdf"></i> PDF</a>
+                    <a href="#" class="pub-link"><i class="fab fa-github"></i> 代码</a>
+                    <a href="#" class="pub-link"><i class="fas fa-external-link-alt"></i> DOI</a>
+                  </div>
+                </div>
+                <div class="pub-tags">
+                  <span class="tag">图神经网络</span>
+                  <span class="tag">社交推荐</span>
+                </div>
+              </li>
+            </ul>
+            <div class="view-all-container">
+              <a href="publications.html" class="btn btn-outline">查看所有论文</a>
+            </div>
+          </div>
+          <div class="tab-pane" id="top">
+            <!-- 顶会论文列表 -->
+          </div>
+          <div class="tab-pane" id="projects">
+            <!-- 研究项目列表 -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 团队成员 -->
+  <section class="team-preview">
+    <div class="container">
+      <h2 class="section-title">核心团队成员</h2>
+      <div class="team-grid">
+        <div class="team-member">
+          <div class="member-photo">
+            <img src="images/people.jpg" alt="夏教授">
+          </div>
+          <div class="member-info">
+            <h3>夏教授</h3>
+            <p class="member-title">实验室主任 | 教授</p>
+            <p class="member-research">研究方向：具身智能、机器学习</p>
+            <div class="member-social">
+              <a href="#"><i class="fas fa-envelope"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-photo">
+            <img src="images/people.jpg" alt="李博士">
+          </div>
+          <div class="member-info">
+            <h3>李博士</h3>
+            <p class="member-title">副教授</p>
+            <p class="member-research">研究方向：因果推断、公平AI</p>
+            <div class="member-social">
+              <a href="#"><i class="fas fa-envelope"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-photo">
+            <img src="images/people.jpg" alt="王博士">
+          </div>
+          <div class="member-info">
+            <h3>王博士</h3>
+            <p class="member-title">助理教授</p>
+            <p class="member-research">研究方向：生成式模型、NLP</p>
+            <div class="member-social">
+              <a href="#"><i class="fas fa-envelope"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="team-member">
+          <div class="member-photo">
+            <img src="images/people.jpg" alt="赵博士">
+          </div>
+          <div class="member-info">
+            <h3>赵博士</h3>
+            <p class="member-title">博士后研究员</p>
+            <p class="member-research">研究方向：图神经网络</p>
+            <div class="member-social">
+              <a href="#"><i class="fas fa-envelope"></i></a>
+              <a href="#"><i class="fas fa-globe"></i></a>
+              <a href="#"><i class="fab fa-google"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="view-all-container">
+        <a href="team.html" class="btn btn-outline">查看所有成员</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 联系我们 -->
+  <section class="contact-preview">
+    <div class="container">
+      <div class="contact-card">
+        <div class="contact-info">
+          <h2>联系我们</h2>
+          <p>欢迎联系SPIN Lab了解更多信息或讨论合作机会</p>
+          <ul class="contact-list">
+            <li><i class="fas fa-map-marker-alt"></i> 北京市海淀区实验室大楼B座305室</li>
+            <li><i class="fas fa-envelope"></i> spinlab@example.edu.cn</li>
+            <li><i class="fas fa-phone"></i> +86 010-12345678</li>
+            <li><i class="fas fa-clock"></i> 工作日: 9:00-17:00</li>
+          </ul>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-weixin"></i></a>
+            <a href="#"><i class="fab fa-weibo"></i></a>
+            <a href="#"><i class="fab fa-github"></i></a>
+          </div>
+        </div>
+        <div class="contact-map">
+          <!-- 这里可以嵌入地图，或者使用静态图片代替 -->
+          <img src="images/map.png" alt="实验室地图">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 页脚 -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>关于我们</h3>
+          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+        </div>
+        <div class="footer-column">
+          <h3>快速链接</h3>
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
+            <li><a href="research.html">研究方向</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>更多资源</h3>
+          <ul>
+            <li><a href="#">研究数据集</a></li>
+            <li><a href="#">开源代码</a></li>
+            <li><a href="#">学术资源</a></li>
+            <li><a href="#">实验室内网</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>订阅我们</h3>
+          <p>订阅我们的通讯，获取最新研究动态</p>
+          <form class="subscribe-form">
+            <input type="email" placeholder="您的邮箱地址">
+            <button type="submit" class="btn">订阅</button>
+          </form>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2023 SPIN Lab. 保留所有权利.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/script.js"></script>
+</body>
+
+</html>
