@@ -13,43 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     /* 团队成员页特有样式 */
-    .page-header {
-      background-color: var(--light-gray);
-      padding: 120px 0 60px;
-      text-align: center;
-      position: relative;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('images/team-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.1;
-      z-index: 1;
-    }
-
-    .page-header-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .page-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .page-header p {
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--dark-gray);
-    }
-
     .breadcrumb {
       list-style: none;
       display: flex;
@@ -82,7 +45,8 @@
 
     .category-title {
       text-align: center;
-      margin-bottom: 50px;
+      margin-top: 0px;
+      margin-bottom: 20px;
     }
 
     .category-title h2 {
@@ -130,14 +94,19 @@
 
     .member-photo {
       width: 100%;
-      height: 320px;
+      height: 260px;
+      margin-top: 20px;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #FFFFFF;
     }
 
     .member-photo img {
       width: 100%;
       height: 100%;
-      object-fit: cover;
+      object-fit: contain;
       transition: transform 0.5s ease;
     }
 
@@ -204,7 +173,7 @@
       }
 
       .member-photo {
-        height: 260px;
+        height: 250px;
       }
     }
   </style>
@@ -219,79 +188,66 @@
           <h1>SPIN Lab</h1>
         </a>
       </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">实验室简介</a></li>
-          <li><a href="research.html">研究方向</a></li>
-          <li><a href="team.html">团队成员</a></li>
-          <li><a href="publications.html">学术成果</a></li>
-          <li><a href="admission.html">招生信息</a></li>
+      <div class="nav-right">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
 
-        </ul>
-      </nav>
+            <li><a href="team.html" class="active">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+            <li><a href="admission.html">招生信息</a></li>
+          </ul>
+        </nav>
+        <div class="search-box">
+          <input type="text" placeholder="搜索...">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="搜索...">
-        <button type="submit"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </header>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="page-header-content">
-        <h1>团队成员</h1>
-        <p>我们实验室拥有一支由经验丰富的指导老师、优秀的研究生和本科生组成的多元化研究团队</p>
-        <ul class="breadcrumb">
-          <li><a href="index.html">首页</a></li>
-          <li>团队成员</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <!-- 教师团队 -->
-  <section class="team-category">
+  <section class="team-category" style="padding-top: 100px;">
     <div class="container">
       <div class="category-title">
         <h2>教师团队</h2>
-        <p>我们的教师团队由国际知名学者和领域专家组成，他们在推荐系统、机器学习等领域拥有深厚的研究背景和丰富的教学经验</p>
       </div>
 
       <div class="team-grid">
         <!-- 教师1 -->
         <div class="team-card">
           <div class="member-photo">
-            <img src="images/xiayan.png" alt="夏老师">
+            <img src="images/xiayan.png" alt="夏彦">
           </div>
           <div class="member-info">
-            <h3>夏老师</h3>
-            <div class="member-position">实验室主任 | 中国科学技术大学预聘副教授</div>
+            <h3>夏彦</h3>
+            <div class="member-position">SPIN-LAB 主任 | 中国科学技术大学预聘副教授</div>
             <div class="member-short-bio">
               牛津大学视觉几何实验室（VGG）访问学者。博士毕业于慕尼黑工业大学，期间在牛津大学VGG实验室联合培养。研究成果发表于CVPR、ICCV、ECCV和ISPRS
               JPRS等国际顶级会议和期刊
             </div>
             <div class="member-links">
-              <a href="#"><i class="fas fa-globe"></i></a>
-              <a href="#"><i class="fas fa-envelope"></i></a>
-              <a href="#"><i class="fab fa-google"></i></a>
-              <a href="#"><i class="fab fa-github"></i></a>
+              <a href="https://saids.ustc.edu.cn/2024/1105/c36363a686123/page.htm"><i class="fas fa-globe"></i></a>
+              <a href="https://yan-xia.github.io/"><i class="fas fa-envelope"></i></a>
+              <a href="https://saids.ustc.edu.cn/2024/1105/c36363a686123/page.htm"><i class="fab fa-google"></i></a>
+              <a href="https://yan-xia.github.io/"><i class="fab fa-github"></i></a>
             </div>
           </div>
         </div>
 
         <div class="team-card">
           <div class="member-photo">
-            <img src="images/professor2.jpg" alt="李教授">
+            <img src="images/people.jpg" alt="李教授">
           </div>
           <div class="member-info">
             <h3>李教授</h3>
             <div class="member-position">副教授</div>
             <div class="member-short-bio">
-              李教授专注于因果推荐系统研究，曾在顶级企业研究院工作，拥有多项专利和丰富的产业合作经验。
+              李教授专注于因果具身智能研究，曾在顶级企业研究院工作，拥有多项专利和丰富的产业合作经验。
             </div>
             <div class="member-links">
               <a href="#"><i class="fas fa-globe"></i></a>
@@ -305,13 +261,13 @@
 
         <div class="team-card">
           <div class="member-photo">
-            <img src="images/professor3.jpg" alt="王教授">
+            <img src="images/people.jpg" alt="王教授">
           </div>
           <div class="member-info">
             <h3>王教授</h3>
             <div class="member-position">助理教授</div>
             <div class="member-short-bio">
-              王教授的研究方向为图神经网络和社交推荐系统，曾获得多项国际学术奖项和青年人才支持计划。
+              王教授的研究方向为图神经网络和社交具身智能，曾获得多项国际学术奖项和青年人才支持计划。
             </div>
             <div class="member-links">
               <a href="#"><i class="fas fa-globe"></i></a>
@@ -333,7 +289,7 @@
     <div class="container">
       <div class="category-title">
         <h2>研究生</h2>
-        <p>我们实验室的博士生和硕士生是研究工作的重要力量，他们在导师指导下开展创新性研究</p>
+        <p>123</p>
       </div>
 
       <div class="team-grid">
@@ -438,7 +394,7 @@
   <section class="join-us">
     <div class="container">
       <h2>加入我们</h2>
-      <p>我们实验室欢迎对推荐系统、机器学习、人工智能等领域感兴趣的优秀学生和研究人员加入。我们提供开放、创新的研究环境和丰富的学术资源。</p>
+      <p>我们实验室欢迎对具身智能、机器学习、人工智能等领域感兴趣的优秀学生和研究人员加入。我们提供开放、创新的研究环境和丰富的学术资源。</p>
       <a href="admission.html" class="btn">查看招生信息</a>
     </div>
   </section>
@@ -449,14 +405,14 @@
       <div class="footer-content">
         <div class="footer-column">
           <h3>关于我们</h3>
-          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+          <p>SPIN Lab致力于具身智能、机器学习等领域的前沿研究，培养高水平研究人才。</p>
         </div>
         <div class="footer-column">
           <h3>快速链接</h3>
           <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="about.html">实验室简介</a></li>
-            <li><a href="research.html">研究方向</a></li>
+
             <li><a href="team.html">团队成员</a></li>
             <li><a href="publications.html">学术成果</a></li>
           </ul>

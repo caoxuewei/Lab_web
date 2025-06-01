@@ -499,7 +499,7 @@
               <img src="images/featured-news.jpg" alt="特色新闻">
               <div class="featured-news-overlay">
                 <div class="featured-news-label">重大突破</div>
-                <h2 class="featured-news-title">我实验室在NeurIPS 2023发表多维公平推荐系统研究成果</h2>
+                <h2 class="featured-news-title">我实验室在NeurIPS 2023发表多维公平具身智能研究成果</h2>
                 <div class="featured-news-meta">
                   <span><i class="far fa-calendar-alt"></i> 2023年11月15日</span>
                   <span><i class="far fa-user"></i> 李四 教授</span>
@@ -517,8 +517,8 @@
               </div>
               <div class="news-card-content">
                 <span class="news-card-category">产学研合作</span>
-                <h3 class="news-card-title"><a href="#">我实验室与科技公司达成战略合作，共同推进生成式推荐系统研究</a></h3>
-                <p class="news-card-excerpt">今日，我实验室与领先科技公司签署战略合作协议，双方将在生成式推荐系统领域开展深入合作，共同推进技术创新和产业应用...</p>
+                <h3 class="news-card-title"><a href="#">我实验室与科技公司达成战略合作，共同推进生成式具身智能研究</a></h3>
+                <p class="news-card-excerpt">今日，我实验室与领先科技公司签署战略合作协议，双方将在生成式具身智能领域开展深入合作，共同推进技术创新和产业应用...</p>
                 <div class="news-card-meta">
                   <span><i class="far fa-calendar-alt"></i> 2023年10月28日</span>
                   <span><i class="far fa-user"></i> 张教授</span>
@@ -565,8 +565,8 @@
               </div>
               <div class="news-card-content">
                 <span class="news-card-category">学术活动</span>
-                <h3 class="news-card-title"><a href="#">我实验室成功举办"因果推荐系统"专题研讨会</a></h3>
-                <p class="news-card-excerpt">上周，我实验室成功举办了"因果推荐系统：理论与实践"专题研讨会，多位国内外知名学者应邀参加并作学术报告...</p>
+                <h3 class="news-card-title"><a href="#">我实验室成功举办"因果具身智能"专题研讨会</a></h3>
+                <p class="news-card-excerpt">上周，我实验室成功举办了"因果具身智能：理论与实践"专题研讨会，多位国内外知名学者应邀参加并作学术报告...</p>
                 <div class="news-card-meta">
                   <span><i class="far fa-calendar-alt"></i> 2023年7月12日</span>
                   <span><i class="far fa-user"></i> 研究室</span>
@@ -582,7 +582,7 @@
               <div class="news-card-content">
                 <span class="news-card-category">项目立项</span>
                 <h3 class="news-card-title"><a href="#">我实验室获国家重点研发计划项目立项</a></h3>
-                <p class="news-card-excerpt">近日，我实验室申报的"公平推荐系统关键技术研究"项目获国家重点研发计划立项，总经费500万元，为期三年...</p>
+                <p class="news-card-excerpt">近日，我实验室申报的"公平具身智能关键技术研究"项目获国家重点研发计划立项，总经费500万元，为期三年...</p>
                 <div class="news-card-meta">
                   <span><i class="far fa-calendar-alt"></i> 2023年6月5日</span>
                   <span><i class="far fa-user"></i> 李教授</span>
@@ -651,7 +651,7 @@
                   <img src="images/recent3.jpg" alt="最新新闻">
                 </div>
                 <div class="recent-news-info">
-                  <h4 class="recent-news-title"><a href="#">我实验室开源大型推荐系统工具包</a></h4>
+                  <h4 class="recent-news-title"><a href="#">我实验室开源大型具身智能工具包</a></h4>
                   <div class="recent-news-date"><i class="far fa-calendar-alt"></i> 2023年10月30日</div>
                 </div>
               </div>
@@ -662,7 +662,7 @@
           <div class="sidebar-widget">
             <h3>热门标签</h3>
             <div class="sidebar-tags">
-              <a href="#" class="sidebar-tag">推荐系统</a>
+              <a href="#" class="sidebar-tag">具身智能</a>
               <a href="#" class="sidebar-tag">机器学习</a>
               <a href="#" class="sidebar-tag">大语言模型</a>
               <a href="#" class="sidebar-tag">学术会议</a>
@@ -685,7 +685,7 @@
       <div class="footer-content">
         <div class="footer-column">
           <h3>关于我们</h3>
-          <p>我们的研究实验室致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+          <p>我们的研究实验室致力于具身智能、机器学习等领域的前沿研究，培养高水平研究人才。</p>
         </div>
         <div class="footer-column">
           <h3>快速链接</h3>

@@ -13,43 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     /* 学术成果页特有样式 */
-    .page-header {
-      background-color: var(--light-gray);
-      padding: 120px 0 60px;
-      text-align: center;
-      position: relative;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('images/publications-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.1;
-      z-index: 1;
-    }
-
-    .page-header-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .page-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .page-header p {
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--dark-gray);
-    }
-
     .breadcrumb {
       list-style: none;
       display: flex;
@@ -303,42 +266,30 @@
           <h1>SPIN Lab</h1>
         </a>
       </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">实验室简介</a></li>
-          <li><a href="research.html">研究方向</a></li>
-          <li><a href="team.html">团队成员</a></li>
-          <li><a href="publications.html">学术成果</a></li>
-          <li><a href="admission.html">招生信息</a></li>
+      <div class="nav-right">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html">实验室简介</a></li>
 
-        </ul>
-      </nav>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html" class="active">学术成果</a></li>
+            <li><a href="admission.html">招生信息</a></li>
+          </ul>
+        </nav>
+        <div class="search-box">
+          <input type="text" placeholder="搜索...">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="搜索...">
-        <button type="submit"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </header>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="page-header-content">
-        <h1>学术成果</h1>
-        <p>浏览我们实验室的顶尖学术研究成果，包括期刊论文、会议发表、专利和开源项目</p>
-        <ul class="breadcrumb">
-          <li><a href="index.html">首页</a></li>
-          <li>学术成果</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
   <!-- 论文列表 -->
-  <section class="publications-container">
+  <section class="publications-container" style="padding-top: 140px;">
     <div class="container">
       <!-- 过滤器 -->
       <div class="publications-filter">
@@ -395,7 +346,7 @@
           <span class="publication-venue">IEEE TKDE 2023</span>
           <p class="publication-abstract">
             本文提出了
-            CausalRec，一种基于结构化因果模型的推荐框架，解决传统推荐系统因相关性而非因果关系导致的推荐偏差问题。我们设计了一个通用的因果图结构，显式建模用户行为、项目特征和外部因素之间的因果关系，并引入反事实推理机制，通过假设干预来评估不同推荐策略的效果。实验结果表明，CausalRec
+            CausalRec，一种基于结构化因果模型的推荐框架，解决传统具身智能因相关性而非因果关系导致的推荐偏差问题。我们设计了一个通用的因果图结构，显式建模用户行为、项目特征和外部因素之间的因果关系，并引入反事实推理机制，通过假设干预来评估不同推荐策略的效果。实验结果表明，CausalRec
             能有效减轻选择偏差和流行度偏差，提高推荐结果的多样性和公平性。
           </p>
           <div class="publication-links">
@@ -406,7 +357,7 @@
             <div class="publication-tags">
               <span class="publication-tag">因果推断</span>
               <span class="publication-tag">反事实推理</span>
-              <span class="publication-tag">推荐系统</span>
+              <span class="publication-tag">具身智能</span>
             </div>
             <div class="publication-metrics">
               <div class="metric">
@@ -423,7 +374,7 @@
           <p class="publication-authors">李四, 张三, 王五</p>
           <span class="publication-venue">NeurIPS 2023</span>
           <p class="publication-abstract">
-            本文提出 FairRec，一种基于对抗学习的多维公平推荐框架，旨在解决推荐系统中的多维度偏见问题。传统公平算法通常只考虑单一敏感属性，而忽略了现实中存在的多维交叉属性带来的复杂歧视。FairRec
+            本文提出 FairRec，一种基于对抗学习的多维公平推荐框架，旨在解决具身智能中的多维度偏见问题。传统公平算法通常只考虑单一敏感属性，而忽略了现实中存在的多维交叉属性带来的复杂歧视。FairRec
             采用对抗训练策略，同时优化推荐准确性和多个公平性指标，在保持推荐质量的同时显著减轻了算法偏见。广泛的实验证明了该方法在各种数据集上的有效性和泛化能力。
           </p>
           <div class="publication-links">
@@ -460,7 +411,7 @@
           <p class="publication-authors">赵六, 王五, 张三, 李四</p>
           <span class="publication-venue">KDD 2022</span>
           <p class="publication-abstract">
-            本文提出了 GraphRec+，一种基于自适应注意力机制的图神经网络社交推荐框架。社交推荐系统旨在利用社交关系信息增强推荐效果，但现有方法难以有效捕捉社交影响与用户偏好之间的复杂交互关系。GraphRec+
+            本文提出了 GraphRec+，一种基于自适应注意力机制的图神经网络社交推荐框架。社交具身智能旨在利用社交关系信息增强推荐效果，但现有方法难以有效捕捉社交影响与用户偏好之间的复杂交互关系。GraphRec+
             通过设计自适应注意力层，能够智能地为不同的社交关系和用户交互分配重要性权重，同时通过图结构学习技术动态优化社交网络的拓扑结构。实验结果表明，GraphRec+ 在多个社交推荐数据集上取得了最先进的性能。
           </p>
           <div class="publication-links">
@@ -488,7 +439,7 @@
           <p class="publication-authors">张三, 李四, 赵六</p>
           <span class="publication-venue">ACM TOIS 2022</span>
           <p class="publication-abstract">
-            本文针对视频推荐系统中的用户多兴趣建模问题提出了一种新颖的解决方案。视频内容的丰富性和多样性使得用户的兴趣通常跨越多个领域，传统的单一向量表示难以捕捉这种复杂性。我们提出的模型通过动态路由机制和多粒度注意力网络，实现了用户多兴趣的自适应表示，并在此基础上设计了一种兴趣感知的视频推荐算法。在多个大规模视频推荐数据集上的实验证明了该方法的有效性和优越性。
+            本文针对视频具身智能中的用户多兴趣建模问题提出了一种新颖的解决方案。视频内容的丰富性和多样性使得用户的兴趣通常跨越多个领域，传统的单一向量表示难以捕捉这种复杂性。我们提出的模型通过动态路由机制和多粒度注意力网络，实现了用户多兴趣的自适应表示，并在此基础上设计了一种兴趣感知的视频推荐算法。在多个大规模视频推荐数据集上的实验证明了该方法的有效性和优越性。
           </p>
           <div class="publication-links">
             <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
@@ -527,14 +478,14 @@
       <div class="footer-content">
         <div class="footer-column">
           <h3>关于我们</h3>
-          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+          <p>SPIN Lab致力于具身智能、机器学习等领域的前沿研究，培养高水平研究人才。</p>
         </div>
         <div class="footer-column">
           <h3>快速链接</h3>
           <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="about.html">实验室简介</a></li>
-            <li><a href="research.html">研究方向</a></li>
+
             <li><a href="team.html">团队成员</a></li>
             <li><a href="publications.html">学术成果</a></li>
           </ul>

@@ -2,7 +2,8 @@
 :root {
   /* 主色调 */
   --primary-color: #005FCC;
-  --secondary-color: #333333;
+  --secondary-color: #212121;
+  --tertiary-color: #9a9a9a;
   --accent-color: #00CC66;
   --accent-color-alt: #FF6600;
   --light-color: #FFFFFF;
@@ -806,7 +807,7 @@ ul {
 
 .member-research {
   color: var(--dark-gray);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   margin-bottom: 15px;
 }
 
@@ -1045,10 +1046,6 @@ ul {
   :root {
     --header-height: 60px;
     --section-spacing: 50px;
-  }
-
-  .nav-right {
-    position: relative;
   }
 
   .main-nav {

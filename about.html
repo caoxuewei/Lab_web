@@ -13,43 +13,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
     /* 实验室简介页特有样式 */
-    .page-header {
-      background-color: var(--light-gray);
-      padding: 120px 0 60px;
-      text-align: center;
-      position: relative;
-    }
-
-    .page-header::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background-image: url('images/about-bg.jpg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.1;
-      z-index: 1;
-    }
-
-    .page-header-content {
-      position: relative;
-      z-index: 2;
-    }
-
-    .page-header h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .page-header p {
-      max-width: 800px;
-      margin: 0 auto;
-      color: var(--dark-gray);
-    }
-
     .breadcrumb {
       list-style: none;
       display: flex;
@@ -120,6 +83,150 @@
       line-height: 1.8;
     }
 
+    /* 研究方向样式 */
+    .research-section {
+      padding: 80px 0;
+    }
+
+    .research-section:nth-child(even) {
+      background-color: var(--light-gray);
+    }
+
+    .research-container {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 50px;
+    }
+
+    .research-content {
+      flex: 1;
+      min-width: 300px;
+    }
+
+    .research-image {
+      flex: 1;
+      min-width: 300px;
+      text-align: center;
+    }
+
+    .research-image img {
+      max-width: 100%;
+      border-radius: var(--card-radius);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .research-section:nth-child(odd) .research-container {
+      flex-direction: row-reverse;
+    }
+
+    .research-content h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .research-content h2::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--primary-color);
+    }
+
+    .research-content p {
+      margin-bottom: 1.5rem;
+      line-height: 1.8;
+    }
+
+    .key-points {
+      margin: 2rem 0;
+    }
+
+    .key-points h3 {
+      margin-bottom: 1rem;
+    }
+
+    .key-points ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .key-points li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 0.8rem;
+    }
+
+    .key-points li::before {
+      content: '\f00c';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      left: 0;
+      top: 2px;
+      color: var(--accent-color);
+    }
+
+    .publication-highlight {
+      margin-top: 2rem;
+      padding: 20px;
+      background-color: var(--light-color);
+      border-radius: var(--card-radius);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .publication-highlight h3 {
+      margin-bottom: 1rem;
+    }
+
+    .publication-highlight p {
+      font-style: italic;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+
+    .publication-highlight .authors {
+      font-weight: 500;
+    }
+
+    .publication-highlight .venue {
+      color: var(--primary-color);
+      font-weight: 700;
+    }
+
+    .publication-links {
+      display: flex;
+      gap: 15px;
+    }
+
+    .publication-links a {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      color: var(--primary-color);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 1.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 5px 15px;
+      background-color: var(--light-gray);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      color: var(--dark-gray);
+    }
+
+    /* 原有样式继续 */
     .milestone-section {
       background-color: var(--light-gray);
       padding: 60px 0;
@@ -249,56 +356,69 @@
     }
 
     .partner-logo {
-      background-color: var(--light-color);
-      padding: 20px;
-      border-radius: var(--card-radius);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-      width: 200px;
-      height: 100px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+      height: 60px;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+      filter: grayscale(100%);
     }
 
     .partner-logo:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-
-    .partner-logo img {
-      max-width: 100%;
-      max-height: 60px;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
-    }
-
-    .partner-logo:hover img {
+      opacity: 1;
       filter: grayscale(0%);
     }
 
-    @media (max-width: 768px) {
+    @media (max-width: 992px) {
+      .milestone-content {
+        width: 100%;
+        margin-left: 0 !important;
+      }
+
       .timeline::before {
         left: 30px;
       }
 
-      .milestone-content {
-        width: calc(100% - 60px);
-        margin-left: 60px !important;
-      }
-
       .milestone::before {
-        left: 22px !important;
+        left: 23px !important;
         right: auto !important;
       }
 
-      .about-content {
-        flex-direction: column-reverse;
+      .milestone-content {
+        margin-left: 70px !important;
       }
 
-      .about-text,
-      .about-image {
+      .research-container {
+        flex-direction: column-reverse !important;
+      }
+
+      .research-content,
+      .research-image {
         flex: 1 1 100%;
+      }
+
+      .research-image {
+        margin-bottom: 20px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .about-content {
+        flex-direction: column;
+      }
+
+      .about-image {
+        order: -1;
+      }
+
+      .mission-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .partner-logos {
+        gap: 20px;
+      }
+
+      .partner-logo {
+        height: 40px;
       }
     }
   </style>
@@ -313,52 +433,233 @@
           <h1>SPIN Lab</h1>
         </a>
       </div>
-      <nav class="main-nav">
-        <ul>
-          <li><a href="index.html">首页</a></li>
-          <li><a href="about.html">实验室简介</a></li>
-          <li><a href="research.html">研究方向</a></li>
-          <li><a href="team.html">团队成员</a></li>
-          <li><a href="publications.html">学术成果</a></li>
-          <li><a href="admission.html">招生信息</a></li>
-
-        </ul>
-      </nav>
+      <div class="nav-right">
+        <nav class="main-nav">
+          <ul>
+            <li><a href="index.html">首页</a></li>
+            <li><a href="about.html" class="active">实验室简介</a></li>
+            <li><a href="team.html">团队成员</a></li>
+            <li><a href="publications.html">学术成果</a></li>
+            <li><a href="admission.html">招生信息</a></li>
+          </ul>
+        </nav>
+        <div class="search-box">
+          <input type="text" placeholder="搜索...">
+          <button type="submit"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
       <div class="menu-toggle">
         <i class="fas fa-bars"></i>
-      </div>
-      <div class="search-box">
-        <input type="text" placeholder="搜索...">
-        <button type="submit"><i class="fas fa-search"></i></button>
       </div>
     </div>
   </header>
 
-  <div class="page-header">
-    <div class="container">
-      <div class="page-header-content">
-        <h1>实验室简介</h1>
-        <p>了解我们实验室的发展历程、使命与愿景</p>
-        <ul class="breadcrumb">
-          <li><a href="index.html">首页</a></li>
-          <li>实验室简介</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- 关于我们 -->
-  <section class="about-section">
+  <!-- 实验室介绍 -->
+  <section class="about-section" style="padding-top: 140px;">
     <div class="container">
       <div class="about-content">
         <div class="about-text">
-          <h2>我们的实验室</h2>
-          <p>SPIN Lab成立于2010年，是国内外知名的推荐系统和人工智能研究团队之一。实验室依托于计算机科学与技术学院，聚焦于推荐系统、机器学习、数据挖掘等领域的前沿研究。</p>
-          <p>经过多年的发展，我们已经建立了一支由教授、副教授、博士后、博士生和硕士生组成的高水平研究团队。团队成员在顶级国际会议和期刊上发表了大量高质量论文，包括ICLR、NeurIPS、KDD、WWW、SIGIR等。</p>
-          <p>我们与多家知名企业和研究机构保持密切合作，共同推动推荐系统技术的创新与发展。我们致力于解决实际应用中的关键问题，推动理论研究与工业应用的结合。</p>
+          <h2>关于SPIN Lab</h2>
+          <p>
+            SPIN Lab（Spatial Intelligence and Neural Processing
+            Laboratory）成立于2018年，是中国科学技术大学人工智能领域的重要研究团队。实验室聚焦于人工智能（AI）与具身智能的前沿研究，致力于探索能够在物理世界中感知、决策并执行复杂任务的智能体理论与技术。
+          </p>
+          <p>
+            实验室依托中国科学技术大学的交叉学科优势，汇聚了由夏彦教授领衔的跨学科团队，成员涵盖计算机视觉、机器人学、强化学习、认知科学等领域的研究者与开发者。我们以"让智能体真正理解并作用于物理世界"为使命，注重理论创新与硬件落地结合。
+          </p>
+          <p>
+            实验室拥有先进的实验平台和开源生态，并欢迎企业与学界以联合研发、技术咨询等形式开展合作，共同推动具身智能从实验室走向真实世界。我们致力于培养具有国际视野和创新能力的高水平研究人才。
+          </p>
         </div>
         <div class="about-image">
-          <img src="images/about-1.jpg" alt="实验室照片">
+          <img src="images/shiyanshi.jpg" alt="实验室环境">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 研究方向部分 -->
+  <section id="research-areas" class="research-section">
+    <div class="container">
+      <h2 class="section-title" style="text-align: center; margin-bottom: 3rem; font-size: 2rem;">核心研究方向</h2>
+    </div>
+  </section>
+
+  <!-- 生成式具身智能 -->
+  <section id="generative" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>生成式具身智能</h2>
+          <p>生成式具身智能是我们实验室的核心研究方向之一，它结合了生成模型与传统具身智能的优势，能够生成个性化的内容推荐，提升用户体验和推荐多样性。</p>
+          <p>通过深度学习和生成模型（如变分自编码器、生成对抗网络和大型语言模型），我们的研究旨在解决传统具身智能中的冷启动问题、数据稀疏性问题，以及推荐多样性不足等挑战。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>基于大型语言模型的对话式具身智能</li>
+              <li>生成模型增强的协同过滤算法</li>
+              <li>多模态内容生成与推荐</li>
+              <li>个性化文本生成推荐</li>
+              <li>生成式具身智能的可解释性</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"PersonaLLM: 整合人格特征的大型语言模型推荐框架"</p>
+            <p class="authors">张三, 李四, 王五, 赵六</p>
+            <p class="venue">ICLR 2023</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">生成式模型</span>
+            <span class="tag">深度学习</span>
+            <span class="tag">个性化推荐</span>
+            <span class="tag">大语言模型</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/generative-recsys.jpg" alt="生成式具身智能">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 公平具身智能 -->
+  <section id="fairness" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>公平具身智能</h2>
+          <p>随着人工智能技术在具身智能中的广泛应用，算法公平性已成为一个日益重要的研究课题。我们的研究聚焦于设计和开发更加公平、无歧视的推荐技术，平衡不同群体的利益。</p>
+          <p>我们从多角度研究具身智能中的公平性问题，包括用户公平、物品公平以及提供者公平等，致力于减轻算法偏见对用户体验和社会价值的负面影响。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>公平性指标的设计与评估</li>
+              <li>无偏数据收集与建模方法</li>
+              <li>多目标优化的公平推荐框架</li>
+              <li>群体公平与个体公平平衡机制</li>
+              <li>公平与准确性权衡的理论基础</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"FairRec: 基于对抗学习的多维公平推荐框架"</p>
+            <p class="authors">李四, 张三, 王五</p>
+            <p class="venue">NeurIPS 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">算法公平性</span>
+            <span class="tag">对抗学习</span>
+            <span class="tag">偏见缓解</span>
+            <span class="tag">伦理AI</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/fairness-recsys.jpg" alt="公平具身智能">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 因果具身智能 -->
+  <section id="causal" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>因果具身智能</h2>
+          <p>传统的基于相关性的具身智能在处理数据偏差和用户反馈循环方面存在固有局限。我们实验室的因果具身智能研究方向致力于应用因果推断方法，解决具身智能中的选择偏差、反事实推理和干预效应估计等问题。</p>
+          <p>通过因果推断框架，我们能够区分关联与因果关系，改进推荐结果的质量和稳健性，同时为推荐决策提供更可靠的解释。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>基于因果图的具身智能建模</li>
+              <li>反事实推理增强的用户偏好学习</li>
+              <li>去偏策略优化与评估</li>
+              <li>因果表示学习在推荐中的应用</li>
+              <li>因果发现与具身智能的结合</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"CausalRec: 基于结构化因果模型的反事实推荐框架"</p>
+            <p class="authors">王五, 张三, 李四</p>
+            <p class="venue">SIGIR 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">因果推断</span>
+            <span class="tag">反事实推理</span>
+            <span class="tag">选择偏差</span>
+            <span class="tag">干预效应</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/causal-recsys.jpg" alt="因果具身智能">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 图神经网络 -->
+  <section id="gnn" class="research-section">
+    <div class="container">
+      <div class="research-container">
+        <div class="research-content">
+          <h2>图神经网络</h2>
+          <p>在具身智能中，用户与物品之间的交互自然形成图结构，图神经网络（GNN）为建模这些复杂关系提供了强大的工具。我们的研究探索图神经网络在社交推荐和知识图谱增强推荐中的应用。</p>
+          <p>通过捕捉图中的高阶连接模式和局部结构特征，我们开发的GNN模型能够更好地表示用户偏好和物品特性，提升具身智能的性能和可解释性。</p>
+
+          <div class="key-points">
+            <h3>核心研究内容</h3>
+            <ul>
+              <li>异构图神经网络的推荐模型</li>
+              <li>基于知识图谱的推荐增强</li>
+              <li>社交网络感知的图卷积推荐</li>
+              <li>图自监督学习在推荐中的应用</li>
+              <li>高效大规模图具身智能</li>
+            </ul>
+          </div>
+
+          <div class="publication-highlight">
+            <h3>代表性论文</h3>
+            <p>"GraphRec+: 自适应注意力图神经网络社交推荐框架"</p>
+            <p class="authors">赵六, 王五, 张三, 李四</p>
+            <p class="venue">KDD 2022</p>
+            <div class="publication-links">
+              <a href="#"><i class="fas fa-file-pdf"></i> 论文PDF</a>
+              <a href="#"><i class="fab fa-github"></i> 代码实现</a>
+            </div>
+          </div>
+
+          <div class="tag-list">
+            <span class="tag">图神经网络</span>
+            <span class="tag">社交推荐</span>
+            <span class="tag">知识图谱</span>
+            <span class="tag">图结构学习</span>
+          </div>
+        </div>
+        <div class="research-image">
+          <img src="images/gnn-recsys.jpg" alt="图神经网络">
         </div>
       </div>
     </div>
@@ -371,44 +672,44 @@
       <div class="timeline">
         <div class="milestone">
           <div class="milestone-content">
-            <div class="milestone-year">2010年</div>
-            <h3>实验室成立</h3>
-            <p>由张教授领导，SPIN Lab正式成立，开始专注于推荐系统研究。</p>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-content">
-            <div class="milestone-year">2013年</div>
-            <h3>首次国际合作</h3>
-            <p>与美国斯坦福大学建立合作关系，开展联合研究项目。</p>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-content">
-            <div class="milestone-year">2015年</div>
-            <h3>首篇顶会论文</h3>
-            <p>团队成员在KDD会议上发表论文，获得广泛关注。</p>
-          </div>
-        </div>
-        <div class="milestone">
-          <div class="milestone-content">
             <div class="milestone-year">2018年</div>
-            <h3>获国家重点研发计划</h3>
-            <p>牵头承担国家重点研发计划项目，研究规模进一步扩大。</p>
+            <h3>实验室成立</h3>
+            <p>由夏彦教授领导，SPIN Lab正式成立，开始专注于具身智能和空间认知研究。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2019年</div>
+            <h3>团队扩展</h3>
+            <p>招收首批博士生和硕士生，建立核心研究团队，开始产出高质量研究成果。</p>
           </div>
         </div>
         <div class="milestone">
           <div class="milestone-content">
             <div class="milestone-year">2020年</div>
-            <h3>成果转化</h3>
-            <p>多项研究成果成功转化为产品，与多家知名企业合作。</p>
+            <h3>国际合作</h3>
+            <p>与牛津大学、斯坦福大学等国际知名院校建立合作关系，开展联合研究项目。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2021年</div>
+            <h3>突破性进展</h3>
+            <p>在计算机视觉和机器人学领域取得重要突破，多篇论文发表在顶级会议。</p>
           </div>
         </div>
         <div class="milestone">
           <div class="milestone-content">
             <div class="milestone-year">2022年</div>
-            <h3>学术影响力提升</h3>
-            <p>团队成员在ICLR、NeurIPS等顶级会议发表多篇论文，学术影响力进一步提升。</p>
+            <h3>产业合作</h3>
+            <p>与多家知名企业建立合作关系，推动技术转化和产业化应用。</p>
+          </div>
+        </div>
+        <div class="milestone">
+          <div class="milestone-content">
+            <div class="milestone-year">2023年</div>
+            <h3>学术影响力</h3>
+            <p>在CVPR、ICCV、ECCV等国际顶级会议发表多篇高影响力论文，学术声誉进一步提升。</p>
           </div>
         </div>
       </div>
@@ -425,14 +726,14 @@
             <i class="fas fa-lightbulb"></i>
           </div>
           <h3>我们的使命</h3>
-          <p>以创新思维推动推荐系统及人工智能领域的技术发展，解决实际应用中的关键问题，培养具有国际竞争力的高水平研究人才。</p>
+          <p>以创新思维推动具身智能和空间认知领域的技术发展，解决真实世界中的复杂问题，培养具有国际竞争力的高水平研究人才。</p>
         </div>
         <div class="mission-card">
           <div class="mission-icon">
             <i class="fas fa-eye"></i>
           </div>
           <h3>我们的愿景</h3>
-          <p>成为国际知名的推荐系统研究中心，引领前沿技术研究方向，推动学术交流与产业合作，为人工智能的发展贡献力量。</p>
+          <p>成为国际知名的具身智能研究中心，引领前沿技术研究方向，推动学术交流与产业合作，为人工智能的发展贡献力量。</p>
         </div>
         <div class="mission-card">
           <div class="mission-icon">
@@ -455,7 +756,7 @@
         <div class="about-text">
           <h2>研究理念</h2>
           <p>我们秉持"研究源于实际问题，技术服务于社会发展"的理念，强调理论与实践的结合，注重研究工作的原创性与实用性。</p>
-          <p>我们鼓励团队成员勇于挑战前沿难题，推动开放合作，促进学科交叉研究。我们特别关注推荐系统中的公平性、可解释性、隐私保护等问题，致力于发展负责任的人工智能技术。</p>
+          <p>我们鼓励团队成员勇于挑战前沿难题，推动开放合作，促进学科交叉研究。我们特别关注人工智能的安全性、可解释性、隐私保护等问题，致力于发展负责任的人工智能技术。</p>
           <p>同时，我们重视人才培养，为研究生提供国际化的学术环境和丰富的研究资源，培养他们的创新能力和团队协作精神。</p>
         </div>
       </div>
@@ -467,24 +768,12 @@
     <div class="container">
       <h2 class="section-title">合作伙伴</h2>
       <div class="partner-logos">
-        <div class="partner-logo">
-          <img src="images/partner-1.png" alt="合作伙伴">
-        </div>
-        <div class="partner-logo">
-          <img src="images/partner-2.png" alt="合作伙伴">
-        </div>
-        <div class="partner-logo">
-          <img src="images/partner-3.png" alt="合作伙伴">
-        </div>
-        <div class="partner-logo">
-          <img src="images/partner-4.png" alt="合作伙伴">
-        </div>
-        <div class="partner-logo">
-          <img src="images/partner-5.png" alt="合作伙伴">
-        </div>
-        <div class="partner-logo">
-          <img src="images/partner-6.png" alt="合作伙伴">
-        </div>
+        <img src="images/partner-1.png" alt="合作伙伴" class="partner-logo">
+        <img src="images/partner-2.png" alt="合作伙伴" class="partner-logo">
+        <img src="images/partner-3.png" alt="合作伙伴" class="partner-logo">
+        <img src="images/partner-4.png" alt="合作伙伴" class="partner-logo">
+        <img src="images/partner-5.png" alt="合作伙伴" class="partner-logo">
+        <img src="images/partner-6.png" alt="合作伙伴" class="partner-logo">
       </div>
     </div>
   </section>
@@ -495,14 +784,14 @@
       <div class="footer-content">
         <div class="footer-column">
           <h3>关于我们</h3>
-          <p>SPIN Lab致力于推荐系统、机器学习等领域的前沿研究，培养高水平研究人才。</p>
+          <p>SPIN Lab致力于具身智能、机器学习等领域的前沿研究，培养高水平研究人才。</p>
         </div>
         <div class="footer-column">
           <h3>快速链接</h3>
           <ul>
             <li><a href="index.html">首页</a></li>
             <li><a href="about.html">实验室简介</a></li>
-            <li><a href="research.html">研究方向</a></li>
+            <li><a href="#research-areas">研究方向</a></li>
             <li><a href="team.html">团队成员</a></li>
             <li><a href="publications.html">学术成果</a></li>
           </ul>
