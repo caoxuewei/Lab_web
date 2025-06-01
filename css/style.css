@@ -169,6 +169,13 @@ ul {
   font-weight: 700;
 }
 
+/* 导航栏右侧内容容器 */
+.nav-right {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
 .main-nav ul {
   display: flex;
   list-style: none;
@@ -217,19 +224,21 @@ ul {
 }
 
 .search-box input {
-  padding: 10px 15px;
+  padding: 8px 12px;
   border: 1px solid var(--mid-gray);
   border-radius: 4px 0 0 4px;
-  width: 200px;
+  width: 140px;
+  font-size: 0.9rem;
 }
 
 .search-box button {
   background-color: var(--primary-color);
   color: var(--light-color);
   border: none;
-  padding: 10px 15px;
+  padding: 8px 12px;
   border-radius: 0 4px 4px 0;
   cursor: pointer;
+  font-size: 0.9rem;
 }
 
 /* 焦点区域 - 轮播图 */
@@ -1036,6 +1045,10 @@ ul {
   :root {
     --header-height: 60px;
     --section-spacing: 50px;
+  }
+
+  .nav-right {
+    position: relative;
   }
 
   .main-nav {
