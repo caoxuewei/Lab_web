@@ -263,7 +263,7 @@
     <div class="container">
       <div class="logo">
         <a href="index.html">
-          <h1>SPIN Lab</h1>
+          <h1>中科大空间智能实验室 SPIN Lab</h1>
         </a>
       </div>
       <div class="nav-right">
@@ -294,11 +294,127 @@
       <!-- 过滤器 -->
       <div class="publications-filter">
         <button class="filter-btn active" data-filter="all">全部成果</button>
-        <button class="filter-btn" data-filter="journal">期刊论文</button>
+
         <button class="filter-btn" data-filter="conference">会议论文</button>
-        <button class="filter-btn" data-filter="preprint">预印本</button>
-        <button class="filter-btn" data-filter="book">专著/章节</button>
-        <button class="filter-btn" data-filter="patent">专利</button>
+
+        <button class="filter-btn" data-filter="journal">期刊论文</button>
+      </div>
+
+      <!-- 2025年 -->
+      <div class="publications-year">
+        <div class="year-heading">
+          <h2>2025</h2>
+          <div class="year-line"></div>
+        </div>
+
+        <!-- 论文1: SparseAlign -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">SparseAlign: A Fully Sparse Framework for Cooperative Object Detection</h3>
+          <p class="publication-authors">Yunshuang Yuan, Yan Xia†, Daniel Cremers, Monika Sester</p>
+          <span class="publication-venue">CVPR 2025</span>
+          <p class="publication-abstract">
+            This paper proposes SparseAlign, a fully sparse framework for cooperative object detection. The framework
+            achieves efficient multi-agent cooperative perception through sparse feature representation and alignment
+            mechanisms. Our method significantly reduces communication overhead while maintaining detection accuracy,
+            providing a novel solution for cooperative perception in autonomous driving and intelligent transportation
+            systems.
+          </p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/pdf/2503.12982" class="publication-link"><i class="fas fa-file-pdf"></i>
+              论文PDF</a>
+            <a href="#" class="https://arxiv.org/pdf/2503.12982"><i class="fab fa-github"></i> 代码</a>
+            <a href="#" class="https://arxiv.org/pdf/2503.12982"><i class="fas fa-external-link-alt"></i> DOI</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">协同目标检测</span>
+              <span class="publication-tag">全稀疏框架</span>
+              <span class="publication-tag">自动驾驶</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 论文2: Localizing Events -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">Localizing Events in Videos with Multimodal Queries</h3>
+          <p class="publication-authors">Gengyuan Zhang, Mang Ling Ada Fok, Jialu Ma, Yan Xia†, Daniel Cremers, Philip
+            Torr, Volker Tresp, Jindong Gu</p>
+          <span class="publication-venue">CVPR 2025</span>
+          <p class="publication-abstract">
+            This paper investigates the problem of localizing events in videos using multimodal queries. We propose a
+            novel approach that can handle queries from multiple modalities including text, images, and audio to
+            accurately localize relevant events in videos. Our method achieves state-of-the-art performance on multiple
+            benchmark datasets, providing important contributions to the fields of video understanding and retrieval.
+          </p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/pdf/2406.10079" class="publication-link"><i class="fas fa-file-pdf"></i>
+              论文PDF</a>
+            <a href="https://arxiv.org/pdf/2406.10079" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="https://arxiv.org/pdf/2406.10079" class="publication-link"><i class="fas fa-external-link-alt"></i>
+              DOI</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">多模态查询</span>
+              <span class="publication-tag">视频事件定位</span>
+              <span class="publication-tag">视频理解</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2024年 -->
+      <div class="publications-year">
+        <div class="year-heading">
+          <h2>2024</h2>
+          <div class="year-line"></div>
+        </div>
+
+        <!-- 论文1: Text2Loc -->
+        <div class="publication-card" data-category="conference">
+          <h3 class="publication-title">Text2Loc: 3D Point Cloud Localization from Natural Language</h3>
+          <p class="publication-authors">Yan Xia*†, Letian Shi*, Zifeng Ding, João F. Henriques, Daniel Cremers</p>
+          <span class="publication-venue">CVPR 2024</span>
+          <p class="publication-abstract">
+            This paper presents Text2Loc, a novel method for 3D point cloud localization from natural language
+            descriptions. We design a hierarchical Transformer architecture that can understand natural language
+            descriptions and accurately localize target positions in large-scale 3D point cloud scenes. Our method
+            achieves excellent performance on multiple indoor and outdoor datasets, opening new research directions for
+            language-based 3D scene understanding.
+          </p>
+          <div class="publication-links">
+            <a href="https://arxiv.org/pdf/2311.15977" class="publication-link"><i class="fas fa-file-pdf"></i>
+              论文PDF</a>
+            <a href="https://arxiv.org/pdf/2311.15977" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="https://arxiv.org/pdf/2311.15977" class="publication-link"><i class="fas fa-external-link-alt"></i>
+              DOI</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">3D点云定位</span>
+              <span class="publication-tag">层次化Transformer</span>
+              <span class="publication-tag">自然语言处理</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-quote-right"></i>
+                <span class="citation-count">12</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- 2023年 -->
@@ -308,167 +424,101 @@
           <div class="year-line"></div>
         </div>
 
-        <!-- 论文1 -->
+        <!-- 论文1: CASSPR -->
         <div class="publication-card" data-category="conference">
-          <h3 class="publication-title">PersonaLLM: 整合人格特征的大型语言模型推荐框架</h3>
-          <p class="publication-authors">张三, 李四, 王五, 赵六</p>
-          <span class="publication-venue">ICLR 2023</span>
+          <h3 class="publication-title">CASSPR: Cross Attention Single Scan Place Recognition</h3>
+          <p class="publication-authors">Yan Xia*†, Mariia Gladkova*, Rui Wang, Qianyun Li, Uwe Stilla, João F.
+            Henriques, Daniel Cremers</p>
+          <span class="publication-venue">ICCV 2023</span>
           <p class="publication-abstract">
-            本文提出了一种新型个性化推荐框架
-            PersonaLLM，该框架将用户个性特征无缝集成到大型语言模型中，实现高度个性化的内容推荐。通过设计特定的提示工程和微调策略，我们的模型能够理解和利用用户的兴趣、喜好和行为模式，生成符合用户特点的推荐结果。实验表明，与现有方法相比，PersonaLLM
-            在推荐准确性、多样性和用户满意度方面均取得显著提升。
+            This paper proposes CASSPR, a cross attention single scan place recognition method. The approach employs an
+            innovative cross attention architecture that enables efficient place recognition from single LiDAR scans,
+            significantly improving recognition accuracy and robustness in complex environments. Our method achieves
+            state-of-the-art performance on multiple benchmark datasets, providing important technical support for
+            robotic navigation and SLAM systems.
           </p>
           <div class="publication-links">
-            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
-            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
-            <a href="#" class="publication-link"><i class="fas fa-globe"></i> 项目主页</a>
-            <a href="#" class="publication-link"><i class="fas fa-video"></i> 演示视频</a>
+            <a href="https://arxiv.org/pdf/2211.12542" class="publication-link"><i class="fas fa-file-pdf"></i>
+              论文PDF</a>
+            <a href="https://arxiv.org/pdf/2211.12542" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="https://arxiv.org/pdf/2211.12542" class="publication-link"><i class="fas fa-external-link-alt"></i>
+              DOI</a>
           </div>
           <div class="publication-info">
             <div class="publication-tags">
-              <span class="publication-tag">生成式模型</span>
-              <span class="publication-tag">大语言模型</span>
-              <span class="publication-tag">个性化推荐</span>
+              <span class="publication-tag">地点识别</span>
+              <span class="publication-tag">交叉注意力</span>
+              <span class="publication-tag">激光雷达</span>
+              <span class="publication-tag">机器人导航</span>
             </div>
             <div class="publication-metrics">
               <div class="metric">
                 <i class="fas fa-quote-right"></i>
-                <span class="citation-count">45</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 论文2 -->
-        <div class="publication-card" data-category="journal">
-          <h3 class="publication-title">CausalRec: 基于结构化因果模型的反事实推荐框架</h3>
-          <p class="publication-authors">王五, 张三, 李四</p>
-          <span class="publication-venue">IEEE TKDE 2023</span>
-          <p class="publication-abstract">
-            本文提出了
-            CausalRec，一种基于结构化因果模型的推荐框架，解决传统具身智能因相关性而非因果关系导致的推荐偏差问题。我们设计了一个通用的因果图结构，显式建模用户行为、项目特征和外部因素之间的因果关系，并引入反事实推理机制，通过假设干预来评估不同推荐策略的效果。实验结果表明，CausalRec
-            能有效减轻选择偏差和流行度偏差，提高推荐结果的多样性和公平性。
-          </p>
-          <div class="publication-links">
-            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
-            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
-          </div>
-          <div class="publication-info">
-            <div class="publication-tags">
-              <span class="publication-tag">因果推断</span>
-              <span class="publication-tag">反事实推理</span>
-              <span class="publication-tag">具身智能</span>
-            </div>
-            <div class="publication-metrics">
-              <div class="metric">
-                <i class="fas fa-quote-right"></i>
-                <span class="citation-count">28</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 论文3 -->
-        <div class="publication-card" data-category="conference">
-          <h3 class="publication-title">FairRec: 基于对抗学习的多维公平推荐框架</h3>
-          <p class="publication-authors">李四, 张三, 王五</p>
-          <span class="publication-venue">NeurIPS 2023</span>
-          <p class="publication-abstract">
-            本文提出 FairRec，一种基于对抗学习的多维公平推荐框架，旨在解决具身智能中的多维度偏见问题。传统公平算法通常只考虑单一敏感属性，而忽略了现实中存在的多维交叉属性带来的复杂歧视。FairRec
-            采用对抗训练策略，同时优化推荐准确性和多个公平性指标，在保持推荐质量的同时显著减轻了算法偏见。广泛的实验证明了该方法在各种数据集上的有效性和泛化能力。
-          </p>
-          <div class="publication-links">
-            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
-            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
-            <a href="#" class="publication-link"><i class="fas fa-globe"></i> 项目主页</a>
-          </div>
-          <div class="publication-info">
-            <div class="publication-tags">
-              <span class="publication-tag">算法公平性</span>
-              <span class="publication-tag">对抗学习</span>
-              <span class="publication-tag">多目标优化</span>
-            </div>
-            <div class="publication-metrics">
-              <div class="metric">
-                <i class="fas fa-quote-right"></i>
-                <span class="citation-count">36</span>
+                <span class="citation-count">25</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 2022年 -->
+      <!-- 2021年 -->
       <div class="publications-year">
         <div class="year-heading">
-          <h2>2022</h2>
+          <h2>2021</h2>
           <div class="year-line"></div>
         </div>
 
-        <!-- 论文4 -->
+        <!-- 论文1: SOE-net -->
         <div class="publication-card" data-category="conference">
-          <h3 class="publication-title">GraphRec+: 自适应注意力图神经网络社交推荐框架</h3>
-          <p class="publication-authors">赵六, 王五, 张三, 李四</p>
-          <span class="publication-venue">KDD 2022</span>
+          <h3 class="publication-title">SOE-net: A self-attention and orientation encoding network for point cloud
+            based
+            place recognition</h3>
+          <p class="publication-authors">Yan Xia, Yusheng Xu, Shuang Li, Rui Wang, Juan Du, Daniel Cremers, Uwe Stilla
+          </p>
+          <span class="publication-venue">CVPR 2021</span>
           <p class="publication-abstract">
-            本文提出了 GraphRec+，一种基于自适应注意力机制的图神经网络社交推荐框架。社交具身智能旨在利用社交关系信息增强推荐效果，但现有方法难以有效捕捉社交影响与用户偏好之间的复杂交互关系。GraphRec+
-            通过设计自适应注意力层，能够智能地为不同的社交关系和用户交互分配重要性权重，同时通过图结构学习技术动态优化社交网络的拓扑结构。实验结果表明，GraphRec+ 在多个社交推荐数据集上取得了最先进的性能。
+            This paper proposes SOE-net, a self-attention and orientation encoding network for point cloud based place
+            recognition. The method captures geometric structure information of point clouds through innovative
+            orientation encoding techniques, and combines self-attention mechanisms to learn long-range dependencies
+            between points, significantly improving point cloud-based place recognition accuracy. SOE-net achieves
+            excellent performance on multiple benchmark datasets, providing important technical support for mobile
+            robot
+            localization and navigation.
           </p>
           <div class="publication-links">
-            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
-            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="https://arxiv.org/pdf/2011.12430" class="publication-link"><i class="fas fa-file-pdf"></i>
+              论文PDF</a>
+            <a href="https://arxiv.org/pdf/2011.12430" class="publication-link"><i class="fab fa-github"></i> 代码</a>
+            <a href="https://arxiv.org/pdf/2011.12430" class="publication-link"><i class="fas fa-external-link-alt"></i>
+              DOI</a>
           </div>
           <div class="publication-info">
             <div class="publication-tags">
-              <span class="publication-tag">图神经网络</span>
-              <span class="publication-tag">社交推荐</span>
-              <span class="publication-tag">注意力机制</span>
+              <span class="publication-tag">地点识别</span>
+              <span class="publication-tag">自注意力机制</span>
+              <span class="publication-tag">方向编码</span>
+              <span class="publication-tag">点云处理</span>
             </div>
             <div class="publication-metrics">
               <div class="metric">
                 <i class="fas fa-quote-right"></i>
-                <span class="citation-count">72</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 论文5 -->
-        <div class="publication-card" data-category="journal">
-          <h3 class="publication-title">Multi-Interest Learning for Video Recommendation</h3>
-          <p class="publication-authors">张三, 李四, 赵六</p>
-          <span class="publication-venue">ACM TOIS 2022</span>
-          <p class="publication-abstract">
-            本文针对视频具身智能中的用户多兴趣建模问题提出了一种新颖的解决方案。视频内容的丰富性和多样性使得用户的兴趣通常跨越多个领域，传统的单一向量表示难以捕捉这种复杂性。我们提出的模型通过动态路由机制和多粒度注意力网络，实现了用户多兴趣的自适应表示，并在此基础上设计了一种兴趣感知的视频推荐算法。在多个大规模视频推荐数据集上的实验证明了该方法的有效性和优越性。
-          </p>
-          <div class="publication-links">
-            <a href="#" class="publication-link"><i class="fas fa-file-pdf"></i> 论文PDF</a>
-            <a href="#" class="publication-link"><i class="fab fa-github"></i> 代码</a>
-          </div>
-          <div class="publication-info">
-            <div class="publication-tags">
-              <span class="publication-tag">多兴趣建模</span>
-              <span class="publication-tag">视频推荐</span>
-              <span class="publication-tag">注意力机制</span>
-            </div>
-            <div class="publication-metrics">
-              <div class="metric">
-                <i class="fas fa-quote-right"></i>
-                <span class="citation-count">53</span>
+                <span class="citation-count">89</span>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 分页 -->
-      <div class="publications-nav">
-        <button class="active">1</button>
-        <button>2</button>
-        <button>3</button>
-        <button><i class="fas fa-ellipsis-h"></i></button>
-        <button>10</button>
-      </div>
+    </div>
+
+    <!-- 分页 -->
+    <div class="publications-nav">
+      <button class="active">1</button>
+      <button>2</button>
+      <button>3</button>
+      <button><i class="fas fa-ellipsis-h"></i></button>
+      <button>10</button>
+    </div>
     </div>
   </section>
 

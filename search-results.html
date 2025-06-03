@@ -273,7 +273,7 @@
 
   <!-- 搜索结果区域 -->
   <section class="search-results-container"
-    style="background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%); color: white; text-align: center; padding: 140px 0 60px;">
+    style="background: linear-gradient(135deg, var(#71a4df) 0%, var(#4f7499) 100%); color: white; text-align: center; padding: 140px 0 60px;">
     <div class="container">
       <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">搜索结果</h1>
       <p style="max-width: 800px; margin: 0 auto 40px;">以下是您搜索的结果</p>
@@ -358,42 +358,131 @@
       const loading = document.getElementById('loading');
       const pagination = document.getElementById('pagination');
 
-      // 模拟网站内容数据（实际应用中可能来自后端API）
+      // 网站内容数据（基于实际网站内容）
       const siteContent = [
+        // 首页内容
         {
-          title: '研究实验室 - 首页',
+          title: 'SPIN Lab - 首页',
           path: 'index.html',
-          content: '研究实验室致力于具身智能、机器学习、人工智能等领域的前沿研究，培养高水平研究人才。我们的研究重点包括具身智能、深度学习、计算机视觉、自然语言处理等方向。'
+          content: 'SPIN Lab致力于具身智能、机器学习、人工智能等领域的前沿研究。实验室主任夏彦为预聘副教授，专注于具身智能和机器学习研究。我们的代表性成果包括SparseAlign、Text2Loc、CASSPR等顶会论文。'
         },
+
+        // 团队成员相关
         {
-          title: '实验室简介',
-          path: 'about.html',
-          content: '研究实验室成立于2010年，是一个专注于人工智能和机器学习研究的学术团队。我们的使命是推动人工智能技术的发展和应用，培养高水平的研究人才，解决实际问题。'
-        },
-        {
-          title: '研究方向',
-          path: 'about.html#research-areas',
-          content: '我们的主要研究方向包括具身智能、深度学习、计算机视觉、自然语言处理等。在具身智能方面，我们研究个性化推荐算法、跨域推荐、序列推荐等；在深度学习方面，我们关注神经网络模型设计、优化技术等。'
-        },
-        {
-          title: '团队成员',
+          title: '夏彦 - 实验室主任',
           path: 'team.html',
-          content: '我们的团队由多位经验丰富的教授、副教授、助理教授、博士后研究员、博士生和硕士生组成。团队成员在各自领域都有深厚的学术积累和研究经验。'
+          content: '夏彦，中国科学技术大学人工智能与数据科学学院预聘副教授，实验室主任。博士毕业于德国慕尼黑工业大学，期间在牛津大学VGG实验室联合培养。研究方向：具身智能、机器学习。研究成果发表于CVPR、ICCV、ECCV和ISPRS JPRS等国际顶级会议和期刊。联系方式：https://saids.ustc.edu.cn/2024/1105/c36363a686123/page.htm，个人主页：https://yan-xia.github.io/。'
         },
         {
-          title: '学术成果',
+          title: '曹学伟 - 博士研究生',
+          path: 'team.html',
+          content: '曹学伟，中国科学技术大学SPIN-LAB的三年级博士生，师从夏彦导师。研究方向为3D点云处理领域，目前感兴趣的方向为多模态内容处理和AI for science。个人主页：https://cxweb.site/，GitHub：https://cxweb.site/。专注于点云处理、多模态学习等前沿技术研究。'
+        },
+        {
+          title: '吴雨涵 - 博士研究生',
+          path: 'team.html',
+          content: '吴雨涵，中国科学技术大学SPIN-LAB实验室的在读博士研究生，由夏彦老师指导。专注于具身智能、移动机器人自主导航和移动操作任务的研究。GitHub：https://github.com/Yuhan321。研究领域包括机器人导航、自主操作、具身AI等。'
+        },
+        {
+          title: '王志超 - 硕士研究生',
+          path: 'team.html',
+          content: '王志超，中国科学技术大学SPIN-LAB实验室在读硕士研究生，师从夏彦导师。在具身智能、机器人等领域进行探索学习。GitHub：http://github.com/Zhichao9264。专注于具身智能和机器人技术的理论研究与实践应用。'
+        },
+        {
+          title: '王硕 - 硕士研究生',
+          path: 'team.html',
+          content: '王硕，中国科学技术大学SPIN-LAB实验室在读硕士研究生，师从夏彦导师。致力于具身智能、自动驾驶、多模态感知等领域的研究学习。研究兴趣包括自动驾驶技术、多模态AI、智能感知系统等前沿方向。'
+        },
+        {
+          title: '曾斌 - 硕士研究生',
+          path: 'team.html',
+          content: '曾斌，中国科学技术大学SPIN-LAB实验室在读硕士研究生，由夏彦老师指导。感兴趣的研究方向为具身智能、自动驾驶与机器人感知定位。专注于机器人感知、定位技术、智能驾驶系统等技术研究。'
+        },
+
+        // 2025年论文
+        {
+          title: 'SparseAlign: A Fully Sparse Framework for Cooperative Object Detection',
           path: 'publications.html',
-          content: '近年来，我们在顶级学术会议和期刊上发表了大量高质量论文，包括但不限于SIGIR、KDD、WWW、AAAI、IJCAI等会议，以及TKDE、TOIS等期刊。'
+          content: 'SparseAlign: A Fully Sparse Framework for Cooperative Object Detection. 作者：Yunshuang Yuan, Yan Xia†, Daniel Cremers, Monika Sester. 会议：CVPR 2025. 这是一个全稀疏协同目标检测框架，通过稀疏特征表示和对齐机制实现高效的多智能体协同感知。论文PDF：https://arxiv.org/pdf/2503.12982'
         },
         {
-          title: '招生信息',
+          title: 'Localizing Events in Videos with Multimodal Queries',
+          path: 'publications.html',
+          content: 'Localizing Events in Videos with Multimodal Queries. 作者：Gengyuan Zhang, Mang Ling Ada Fok, Jialu Ma, Yan Xia†, Daniel Cremers, Philip Torr, Volker Tresp, Jindong Gu. 会议：CVPR 2025. 研究使用多模态查询在视频中定位事件的问题，能够处理文本、图像和音频等多种模态的查询。论文PDF：https://arxiv.org/pdf/2406.10079'
+        },
+
+        // 2024年论文
+        {
+          title: 'Text2Loc: 3D Point Cloud Localization from Natural Language',
+          path: 'publications.html',
+          content: 'Text2Loc: 3D Point Cloud Localization from Natural Language. 作者：Yan Xia*†, Letian Shi*, Zifeng Ding, João F. Henriques, Daniel Cremers. 会议：CVPR 2024. 这是一种基于自然语言描述的3D点云定位新方法，设计了层次化Transformer架构，能够理解自然语言描述并在大规模3D点云场景中准确定位目标位置。论文PDF：https://arxiv.org/pdf/2311.15977'
+        },
+
+        // 2023年论文
+        {
+          title: 'CASSPR: Cross Attention Single Scan Place Recognition',
+          path: 'publications.html',
+          content: 'CASSPR: Cross Attention Single Scan Place Recognition. 作者：Yan Xia*†, Mariia Gladkova*, Rui Wang, Qianyun Li, Uwe Stilla, João F. Henriques, Daniel Cremers. 会议：ICCV 2023. 提出了一种交叉注意力单扫描地点识别方法，采用创新的交叉注意力架构，能够从单个激光雷达扫描中高效进行地点识别，显著提高复杂环境中的识别准确性和鲁棒性。'
+        },
+
+        // 2021年论文
+        {
+          title: 'SOE-net: A self-attention and orientation encoding network for point cloud based place recognition',
+          path: 'publications.html',
+          content: 'SOE-net: A self-attention and orientation encoding network for point cloud based place recognition. 作者：Yan Xia, Yusheng Xu, Shuang Li, Rui Wang, Juan Du, Daniel Cremers, Uwe Stilla. 会议：CVPR 2021. 这是一个基于自注意力和方向编码的点云地点识别网络，通过创新的方向编码技术捕获点云的几何结构信息，结合自注意力机制学习点之间的长距离依赖关系。引用数：89'
+        },
+
+
+
+        // 研究领域和方向
+        {
+          title: '具身智能研究',
+          path: 'about.html',
+          content: '具身智能是我们实验室的核心研究方向之一。夏彦教授在具身智能领域有深入研究，包括3D点云处理、地点识别、协同感知等。我们的研究涉及自注意力机制、Transformer架构、多模态学习等前沿技术。'
+        },
+        {
+          title: '机器学习研究',
+          path: 'about.html',
+          content: '机器学习是实验室的另一个重要研究方向。我们专注于深度学习、图神经网络、因果推断、公平AI等领域。团队在顶级会议CVPR、ICCV、NeurIPS、KDD等发表多篇高质量论文。'
+        },
+        {
+          title: '3D点云定位与识别',
+          path: 'about.html',
+          content: '我们在3D点云定位和地点识别方面有突出贡献。Text2Loc实现了基于自然语言的3D点云定位，CASSPR提出了交叉注意力单扫描地点识别，SOE-net结合自注意力和方向编码进行点云地点识别。'
+        },
+        {
+          title: '协同目标检测',
+          path: 'about.html',
+          content: 'SparseAlign提出了全稀疏协同目标检测框架，通过稀疏特征表示和对齐机制实现高效的多智能体协同感知，显著减少通信开销的同时保持检测精度。'
+        },
+
+        // 招生信息
+        {
+          title: '博士后研究员招聘',
           path: 'admission.html',
-          content: '我们实验室每年招收博士生、硕士生和本科生进行科研训练。我们期待有志于人工智能和机器学习研究的学生加入我们的团队。'
+          content: '我们长期招聘博士后研究员，要求具有计算机科学、人工智能或相关领域博士学位。研究方向包括具身智能、机器学习、3D视觉等。优秀的候选人将有机会参与顶级会议论文发表。'
         },
         {
-          title: '联系方式',
+          title: '博士生招生',
+          path: 'admission.html',
+          content: '每年招收博士生进行前沿科研。要求对具身智能、机器学习有浓厚兴趣，具备扎实的数学基础和编程能力。将在夏彦教授指导下进行3D点云、地点识别、协同感知等方向的研究。'
+        },
+        {
+          title: '硕士生招生',
+          path: 'admission.html',
+          content: '欢迎优秀本科生申请硕士研究生。研究方向包括深度学习、计算机视觉、自然语言处理等。将参与实验室的前沿研究项目，有机会在顶级会议发表论文。'
+        },
+        {
+          title: '本科生科研训练',
+          path: 'admission.html',
+          content: '为优秀本科生提供科研训练机会，可参与具身智能、机器学习相关项目。通过本科生科研训练，学生将掌握科研方法，提升创新能力，为后续深造打下基础。'
+        },
+
+        // 联系信息
+        {
+          title: '联系方式与实验室地址',
           path: 'contact.html',
-          content: '如果您对我们的研究工作感兴趣，或者希望了解更多关于合作机会、招生政策等信息，请随时与我们联系。我们的实验室位于中国某省某市某区某路123号，某大学科研大楼B座305-308室。'
+          content: '夏彦教授联系方式：https://saids.ustc.edu.cn/2024/1105/c36363a686123/page.htm，个人主页：https://yan-xia.github.io/。实验室隶属于中国科学技术大学，专注于具身智能和机器学习前沿研究。'
         }
       ];
 

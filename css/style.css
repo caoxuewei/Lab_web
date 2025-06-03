@@ -439,11 +439,11 @@ ul {
 }
 
 .slider-prev {
-  left: -25px;
+  left: -100px;
 }
 
 .slider-next {
-  right: -25px;
+  right: -100px;
 }
 
 .hero-slider:hover .slider-prev {
@@ -755,9 +755,13 @@ ul {
 
 .team-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  grid-template-columns: repeat(3, minmax(250px, 320px));
   gap: 30px;
   margin-bottom: 40px;
+  justify-content: center;
+  max-width: 1080px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .team-member {
@@ -776,12 +780,16 @@ ul {
 .member-photo {
   height: 250px;
   overflow: hidden;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .member-photo img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: transform 0.5s ease;
 }
 
@@ -1126,19 +1134,19 @@ ul {
   }
 
   .slider-prev {
-    left: -20px;
+    left: -25px;
   }
 
   .slider-next {
-    right: -20px;
+    right: -25px;
   }
 
   .hero-slider:hover .slider-prev {
-    left: 0;
+    left: -10px;
   }
 
   .hero-slider:hover .slider-next {
-    right: 0;
+    right: -10px;
   }
 
   .control {
@@ -1163,6 +1171,14 @@ ul {
   .footer-content {
     grid-template-columns: 1fr;
     gap: 30px;
+  }
+}
+
+/* 中等屏幕调整 */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .team-grid {
+    grid-template-columns: repeat(3, minmax(220px, 280px));
+    gap: 25px;
   }
 }
 

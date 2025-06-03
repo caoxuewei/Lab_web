@@ -10,6 +10,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
   <style>
+    body {
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px !important;
+      padding: 0 15px !important;
+    }
+
     .breadcrumb {
       list-style: none;
       display: flex;
@@ -62,9 +71,38 @@
 
     .programs-container {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 30px;
-      margin-bottom: 50px;
+      grid-template-columns: repeat(4, minmax(300px, 1fr));
+      gap: 15px;
+      margin: 0 auto 20px auto;
+      max-width: 1200px;
+      width: 100%;
+      box-sizing: border-box;
+      padding: 0;
+      justify-content: center;
+    }
+
+    /* 响应式设计 */
+    @media (min-width: 1600px) {
+      .programs-container {
+        gap: 15px;
+        max-width: 1600px;
+      }
+    }
+
+    @media (max-width: 1200px) {
+      .programs-container {
+        grid-template-columns: repeat(2, minmax(300px, 1fr));
+        gap: 20px;
+        max-width: 800px;
+        width: 95%;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .programs-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
     }
 
     .program-card {
@@ -73,6 +111,9 @@
       overflow: hidden;
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .program-card:hover {
@@ -92,14 +133,44 @@
       font-size: 1.3rem;
     }
 
+    /* 博士后研究员 - 最深蓝色 */
+    .program-card:nth-child(1) .program-header {
+      background: linear-gradient(135deg, #294490, #797c87);
+    }
+
+    /* 博士生 - 次深蓝色 */
+    .program-card:nth-child(2) .program-header {
+      background: linear-gradient(135deg, #4a5b97, #a4a9b4);
+    }
+
+    /* 硕士生 - 中等蓝色 */
+    .program-card:nth-child(3) .program-header {
+      background: linear-gradient(135deg, #547acd, #a8b0bc);
+    }
+
+    /* 本科生科研 - 最浅蓝色 */
+    .program-card:nth-child(4) .program-header {
+      background: linear-gradient(135deg, #b7c9e7, #8bb7ed);
+    }
+
     .program-content {
       padding: 25px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .program-content ul {
       list-style: none;
       padding: 0;
       margin: 0 0 20px;
+      flex-grow: 1;
+    }
+
+    .program-content .btn {
+      margin-top: auto;
+      align-self: center;
+      text-align: center;
     }
 
     .program-content li {
@@ -330,7 +401,7 @@
     <div class="container">
       <div class="logo">
         <a href="index.html">
-          <h1>SPIN Lab</h1>
+          <h1>中科大空间智能实验室 SPIN Lab </h1>
         </a>
       </div>
       <div class="nav-right">
@@ -371,6 +442,24 @@
       <div class="container">
 
         <div class="programs-container">
+          <!-- 博士后项目 -->
+          <div class="program-card">
+            <div class="program-header">
+              <h3>博士后研究员</h3>
+            </div>
+            <div class="program-content">
+              <ul>
+                <li>全职博士后研究员职位</li>
+                <li>提供具有竞争力的薪酬待遇</li>
+                <li>申请国家和省部级博士后基金</li>
+                <li>参与高影响因子期刊论文发表</li>
+                <li>提供国际会议交流和访学机会</li>
+                <li>申请青年人才项目和教职岗位</li>
+              </ul>
+              <a href="#application" class="btn">申请要求</a>
+            </div>
+          </div>
+
           <!-- 博士项目 -->
           <div class="program-card">
             <div class="program-header">
@@ -381,10 +470,10 @@
                 <li>全日制博士研究生项目</li>
                 <li>学制3-5年</li>
                 <li>每年提供全额奖学金</li>
-                <li>参与国际顶级会议和期刊论文发表</li>
-                <li>有机会参与国际交流和企业实习</li>
+                <li>参与国际顶级会议和论文发表</li>
+                <li>有机会参与国际交流和实习</li>
               </ul>
-              <a href="#application" class="btn">申请流程</a>
+              <a href="#application" class="btn">申请要求</a>
             </div>
           </div>
 
@@ -398,10 +487,10 @@
                 <li>全日制硕士研究生项目</li>
                 <li>学制2-3年</li>
                 <li>提供奖学金和助研机会</li>
-                <li>参与高水平会议和期刊论文发表</li>
+                <li>参与高水平会议和论文发表</li>
                 <li>有机会继续攻读博士学位</li>
               </ul>
-              <a href="#application" class="btn">申请流程</a>
+              <a href="#application" class="btn">申请要求</a>
             </div>
           </div>
 
@@ -418,7 +507,7 @@
                 <li>优秀者可推荐攻读研究生</li>
                 <li>培养学术研究和创新能力</li>
               </ul>
-              <a href="#application" class="btn">申请流程</a>
+              <a href="#application" class="btn">申请要求</a>
             </div>
           </div>
         </div>
@@ -426,11 +515,11 @@
     </section>
 
     <!-- 申请要求 -->
-    <section class="admission-section" style="background-color: var(--light-gray);">
+    <section id="application" class="admission-section" style="background-color: var(--light-gray);">
       <div class="container">
         <div class="section-title">
           <h2>申请要求</h2>
-          <p>我们期待具有扎实专业基础和研究热情的优秀学生加入我们的团队</p>
+          <p>我们期待具有扎实专业基础和研究热情的优秀学者加入我们的团队</p>
         </div>
 
         <div class="requirements-list">
@@ -440,7 +529,7 @@
               <i class="fas fa-graduation-cap"></i>
               <h3>学术背景</h3>
             </div>
-            <p>计算机科学、人工智能、数据科学、应用数学或相关专业背景，具有扎实的编程和数学基础。博士申请者需具有相关领域的硕士学位或同等研究经历。</p>
+            <p>计算机科学、人工智能、数据科学、应用数学或相关专业背景，具有扎实的编程和数学基础。博士后申请者需具有相关领域的博士学位。博士申请者需具有相关领域的硕士学位或同等研究经历。</p>
           </div>
 
           <!-- 研究经验 -->
@@ -449,7 +538,9 @@
               <i class="fas fa-flask"></i>
               <h3>研究经验</h3>
             </div>
-            <p>博士申请者需具有相关研究经验，并有发表高质量论文的记录。硕士申请者应有一定的科研经历或项目实践经验。本科生应具有良好的学习成绩和科研潜力。</p>
+            <p>
+              博士后申请者需具有优秀的研究成果，在顶级期刊或会议发表多篇高质量论文，具备独立开展前沿研究的能力。博士申请者需具有相关研究经验，并有发表高质量论文的记录。硕士申请者应有一定的科研经历或项目实践经验。本科生应具有良好的学习成绩和科研潜力。
+            </p>
           </div>
 
           <!-- 专业技能 -->
@@ -473,58 +564,9 @@
       </div>
     </section>
 
-    <!-- 申请流程 -->
-    <section id="application" class="admission-section">
-      <div class="container">
-        <div class="section-title">
-          <h2>申请流程</h2>
-          <p>按照以下步骤申请加入我们的研究团队</p>
-        </div>
-
-        <div class="application-steps">
-          <div class="step-line"></div>
-
-          <!-- 步骤1 -->
-          <div class="step-item">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>提交申请材料</h3>
-              <p>通过学校研究生招生系统提交申请，包括个人简历、成绩单、研究计划、代表性论文或项目（如有）以及推荐信。请在研究计划中明确表示有意加入我们实验室。</p>
-            </div>
-          </div>
-
-          <!-- 步骤2 -->
-          <div class="step-item">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>联系导师</h3>
-              <p>发送邮件给实验室导师，介绍自己的研究兴趣和背景，附上简历和研究计划。建议在邮件主题中注明"研究生申请"字样。</p>
-            </div>
-          </div>
-
-          <!-- 步骤3 -->
-          <div class="step-item">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>面试</h3>
-              <p>初步筛选后，我们将邀请合适的候选人参加面试。面试内容包括专业知识考核、研究能力评估以及英语水平测试。面试可能以现场或线上方式进行。</p>
-            </div>
-          </div>
-
-          <!-- 步骤4 -->
-          <div class="step-item">
-            <div class="step-number">4</div>
-            <div class="step-content">
-              <h3>录取通知</h3>
-              <p>面试通过后，我们将向成功的申请者发出录取通知，并提供相关奖学金和资助信息。请按照通知要求在规定时间内确认入学意向。</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
 
     <!-- 重要日期 -->
-    <section class="admission-section" style="background-color: var(--light-gray);">
+    <!-- <section class="admission-section" style="background-color: var(--light-gray);">
       <div class="container">
         <div class="section-title">
           <h2>重要日期</h2>
@@ -534,7 +576,7 @@
         <div class="key-dates">
           <div class="date-line"></div>
           <div class="date-items">
-            <!-- 日期1 -->
+
             <div class="date-item">
               <div class="date-marker"></div>
               <div class="date-content">
@@ -543,7 +585,6 @@
               </div>
             </div>
 
-            <!-- 日期2 -->
             <div class="date-item">
               <div class="date-marker"></div>
               <div class="date-content">
@@ -552,7 +593,6 @@
               </div>
             </div>
 
-            <!-- 日期3 -->
             <div class="date-item">
               <div class="date-marker"></div>
               <div class="date-content">
@@ -561,7 +601,6 @@
               </div>
             </div>
 
-            <!-- 日期4 -->
             <div class="date-item">
               <div class="date-marker"></div>
               <div class="date-content">
@@ -570,7 +609,6 @@
               </div>
             </div>
 
-            <!-- 日期5 -->
             <div class="date-item">
               <div class="date-marker"></div>
               <div class="date-content">
@@ -579,44 +617,44 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
 
-        <div class="contact-info">
-          <div class="contact-header">
-            <h3>联系方式</h3>
-            <p>如有问题，请通过以下方式联系我们</p>
+    <div class="contact-info">
+      <div class="contact-header">
+        <h3>联系方式</h3>
+        <p>如有问题，请通过以下方式联系我们。博士后申请者请直接联系实验室PI夏彦教授</p>
+      </div>
+      <div class="contact-methods">
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-envelope"></i>
           </div>
-          <div class="contact-methods">
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-envelope"></i>
-              </div>
-              <div>
-                <h4>招生邮箱</h4>
-                <p>admission@lab.edu.cn</p>
-              </div>
-            </div>
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-phone"></i>
-              </div>
-              <div>
-                <h4>招生电话</h4>
-                <p>+86 123 4567 8901</p>
-              </div>
-            </div>
-            <div class="contact-method">
-              <div class="contact-icon">
-                <i class="fas fa-building"></i>
-              </div>
-              <div>
-                <h4>招生办公室</h4>
-                <p>科研大楼B座306室</p>
-              </div>
-            </div>
+          <div>
+            <h4>招生邮箱</h4>
+            <p>yan.xia@ustc.edu.cn</p>
+          </div>
+        </div>
+        <!-- <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-phone"></i>
+          </div>
+          <div>
+            <h4>招生电话</h4>
+            <p>+86 123 4567 8901</p>
+          </div>
+        </div> -->
+        <div class="contact-method">
+          <div class="contact-icon">
+            <i class="fas fa-building"></i>
+          </div>
+          <div>
+            <h4>招生办公室</h4>
+            <p>中国科学技术大学人工智能与数据科学学院</p>
           </div>
         </div>
       </div>
+    </div>
+    </div>
     </section>
   </main>
 
