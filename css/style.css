@@ -156,6 +156,8 @@ ul {
 .logo {
   font-size: 1.2rem;
   font-weight: 700;
+  flex-shrink: 0;
+  max-width: 70%;
 }
 
 .logo a {
@@ -1056,6 +1058,18 @@ ul {
     --section-spacing: 50px;
   }
 
+  .logo {
+    max-width: 65%;
+  }
+
+  .logo h1 {
+    font-size: 1.3rem;
+    letter-spacing: 0.3px;
+    line-height: 1.2;
+    word-break: keep-all;
+    overflow-wrap: break-word;
+  }
+
   .main-nav {
     position: fixed;
     top: var(--header-height);
@@ -1187,6 +1201,16 @@ ul {
     --section-spacing: 40px;
   }
 
+  .logo {
+    max-width: 70%;
+  }
+
+  .logo h1 {
+    font-size: 1.1rem;
+    letter-spacing: 0.2px;
+    line-height: 1.2;
+  }
+
   .section-title {
     font-size: 1.6rem;
   }
@@ -1208,5 +1232,30 @@ ul {
 
   .contact-info {
     padding: 30px 20px;
+  }
+}
+
+/* 超小屏幕优化 */
+@media (max-width: 480px) {
+  .logo {
+    max-width: 75%;
+  }
+
+  .logo h1 {
+    font-size: 1rem;
+    letter-spacing: 0.1px;
+    line-height: 1.1;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    max-width: 80%;
+  }
+
+  .logo h1 {
+    font-size: 0.9rem;
+    letter-spacing: 0.05px;
+    line-height: 1.1;
   }
 }
