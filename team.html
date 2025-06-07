@@ -75,8 +75,22 @@
 
     .team-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
+    }
+
+    /* 教师团队居中显示 */
+    .team-category:first-of-type .team-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .team-category:first-of-type .team-card {
+      max-width: 400px;
+      width: 100%;
     }
 
     .team-card {
@@ -154,8 +168,10 @@
     }
 
     .join-us {
-      margin-top: 80px;
+      margin-top: 120px;
       text-align: center;
+      background-color: var(--light-gray);
+      padding: 80px 0;
     }
 
     .join-us h2 {
@@ -185,7 +201,7 @@
     <div class="container">
       <div class="logo">
         <a href="index.html">
-          <h1>SPIN Lab</h1>
+          <h1>中科大空间智能实验室 SPIN Lab </h1>
         </a>
       </div>
       <div class="nav-right">
@@ -258,7 +274,7 @@
           </div>
         </div> -->
 
-<!-- 
+        <!-- 
         <div class="team-card">
           <div class="member-photo">
             <img src="images/people.jpg" alt="王教授">
