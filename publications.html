@@ -238,6 +238,56 @@
       background-color: var(--accent-color);
     }
 
+    /* 组织者信息样式 */
+    .workshop-organizers {
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .organizer-info {
+      padding: 10px;
+      border-radius: 6px;
+      background-color: white;
+      border: 1px solid #e9ecef;
+    }
+
+    .organizer-info strong {
+      color: var(--primary-color);
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .organizer-info em {
+      color: var(--dark-gray);
+      font-size: 0.9rem;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .organizer-info small {
+      color: var(--tertiary-color);
+      font-size: 0.85rem;
+      line-height: 1.3;
+    }
+
+    /* 组织者详细信息样式 */
+    .organizer-profile {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .organizer-profile:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .workshop-details, .workshop-themes {
+      margin: 15px 0;
+    }
+
+    .workshop-details h4, .workshop-themes h4 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
     @media (max-width: 768px) {
       .publication-info {
         flex-direction: column;
@@ -252,6 +302,30 @@
         justify-content: flex-start;
         overflow-x: auto;
         padding-bottom: 10px;
+      }
+
+      .workshop-organizers div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 10px !important;
+      }
+
+      .organizer-info {
+        margin-bottom: 10px;
+      }
+
+      .organizer-profile div[style*="flex"] {
+        flex-direction: column !important;
+        gap: 10px !important;
+      }
+
+      .organizer-profile div[style*="min-width"] {
+        min-width: auto !important;
+      }
+
+      .workshop-details div[style*="grid"], 
+      .workshop-themes div[style*="grid"] {
+        grid-template-columns: 1fr !important;
+        gap: 8px !important;
       }
     }
   </style>
@@ -296,6 +370,8 @@
         <button class="filter-btn active" data-filter="all">全部成果</button>
 
         <button class="filter-btn" data-filter="conference">会议论文</button>
+
+        <button class="filter-btn" data-filter="workshop">学术研讨会专题</button>
 
         <!-- <button class="filter-btn" data-filter="journal">期刊论文</button> -->
       </div>
@@ -509,6 +585,252 @@
         </div>
       </div>
 
+      <!-- 学术研讨会专题 -->
+      <div class="publications-year" data-category="workshop" style="display: none;">
+        <div class="year-heading">
+          <h2>学术研讨会专题</h2>
+          <div class="year-line"></div>
+        </div>
+
+        <!-- 研讨会1: 空间智能与机器人感知研讨会 -->
+        <div class="publication-card" data-category="workshop">
+          <h3 class="publication-title">第三届空间智能与机器人感知国际研讨会</h3>
+          <p class="publication-authors">主办单位：中国科学技术大学SPIN实验室</p>
+          <span class="publication-venue">SPIN Workshop 2025</span>
+          
+          <!-- 会议详细信息 -->
+          <div class="workshop-details" style="margin: 15px 0; padding: 15px; background-color: #fff8e1; border-radius: 8px; border-left: 4px solid #ffc107;">
+            <h4 style="margin-bottom: 10px; color: #ff8f00; font-size: 1rem;">会议详情</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px; font-size: 0.9rem;">
+              <div><strong>举办时间：</strong> 2025年7月15-17日</div>
+              <div><strong>举办地点：</strong> 中国科学技术大学</div>
+              <div><strong>会议规模：</strong> 约150人</div>
+              <div><strong>会议语言：</strong> 中英文</div>
+            </div>
+          </div>
+
+          <!-- 主要议题 -->
+          <div class="workshop-themes" style="margin: 15px 0; padding: 15px; background-color: #e8f5e8; border-radius: 8px; border-left: 4px solid #4caf50;">
+            <h4 style="margin-bottom: 10px; color: #2e7d32; font-size: 1rem;">主要议题</h4>
+            <ul style="margin: 0; padding-left: 20px; font-size: 0.9rem; line-height: 1.6;">
+              <li>3D计算机视觉与点云处理技术</li>
+              <li>机器人感知与环境理解</li>
+              <li>视觉SLAM与地点识别</li>
+              <li>多模态感知融合技术</li>
+              <li>协同感知与群体智能</li>
+              <li>自动驾驶感知技术</li>
+            </ul>
+          </div>
+
+          <p class="publication-abstract">
+            本次研讨会聚焦空间智能、机器人感知、3D场景理解等前沿技术，邀请国内外知名学者分享最新研究成果。
+            会议涵盖点云处理、视觉定位、多模态感知、协同感知等热点话题，为相关领域研究者提供学术交流平台。
+          </p>
+          
+          <div class="workshop-organizers" style="margin: 20px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h4 style="margin-bottom: 15px; color: var(--primary-color); font-size: 1.1rem;">组织者信息</h4>
+            
+            <!-- Yan Xia -->
+            <div class="organizer-profile" style="margin-bottom: 20px; padding: 15px; background-color: white; border-radius: 6px; border: 1px solid #e9ecef;">
+              <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="min-width: 80px;">
+                  <strong style="color: var(--primary-color); font-size: 1.1rem;">Yan Xia</strong>
+                  <div style="color: var(--dark-gray); font-size: 0.9rem; margin-top: 5px;">主席</div>
+                </div>
+                <div style="flex: 1;">
+                  <div style="color: #007bff; font-weight: 500; margin-bottom: 8px;">
+                    副教授，中国科学技术大学(USTC)
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--dark-gray);">
+                    夏彦现为中国科学技术大学终身制副教授。此前在慕尼黑工业大学(TUM)计算机视觉与人工智能实验室担任高级研究员，
+                    并在慕尼黑机器学习中心(MCML)担任研究科学家，与Daniel Cremers教授合作。他于2023年获得TUM博士学位，
+                    曾在牛津大学视觉几何组(VGG)担任访问学者。研究兴趣包括3D视觉、机器人技术和自动驾驶。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Niclas Zeller -->
+            <div class="organizer-profile" style="margin-bottom: 20px; padding: 15px; background-color: white; border-radius: 6px; border: 1px solid #e9ecef;">
+              <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="min-width: 80px;">
+                  <strong style="color: var(--primary-color); font-size: 1.1rem;">Niclas Zeller</strong>
+                  <div style="color: var(--dark-gray); font-size: 0.9rem; margin-top: 5px;">共同主席</div>
+                </div>
+                <div style="flex: 1;">
+                  <div style="color: #007bff; font-weight: 500; margin-bottom: 8px;">
+                    教授，卡尔斯鲁厄应用科技大学(HKA)
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--dark-gray);">
+                    Niclas Zeller是卡尔斯鲁厄应用科技大学电气工程与信息技术学院的教授。在担任教授之前，
+                    Niclas曾在Artisense担任高级计算机视觉与人工智能研究员，并在Visteon卡尔斯鲁厄分部担任ADAS感知开发工程师。
+                    他于2018年获得TUM博士学位。研究重点为基于不同视觉传感器的SLAM和3D感知技术。
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Daniel Cremers -->
+            <div class="organizer-profile" style="margin-bottom: 10px; padding: 15px; background-color: white; border-radius: 6px; border: 1px solid #e9ecef;">
+              <div style="display: flex; align-items: flex-start; gap: 15px;">
+                <div style="min-width: 80px;">
+                  <strong style="color: var(--primary-color); font-size: 1.1rem;">Daniel Cremers</strong>
+                  <div style="color: var(--dark-gray); font-size: 0.9rem; margin-top: 5px;">共同主席</div>
+                </div>
+                <div style="flex: 1;">
+                  <div style="color: #007bff; font-weight: 500; margin-bottom: 8px;">
+                    教授，慕尼黑工业大学(TUM)
+                  </div>
+                  <p style="margin: 0; font-size: 0.9rem; line-height: 1.5; color: var(--dark-gray);">
+                    Daniel Cremers是慕尼黑工业大学教授，担任计算机视觉与人工智能实验室主任。他也是Artisense的联合创始人，
+                    该公司是一家开发机器人和自动驾驶计算机视觉与AI解决方案的深科技初创公司。Daniel曾担任ICCV、ECCV、CVPR、
+                    ACCV、IROS等会议的领域主席，以及ACCV2014的程序主席。2018年，他是慕尼黑ECCV会议的组织者。
+                    他的论文获得了多个奖项，被引用超过70000次。2016年，Daniel获得莱布尼茨奖，这是德国学术界的最高奖项。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-calendar-alt"></i> 会议安排</a>
+            <a href="#" class="publication-link"><i class="fas fa-map-marker-alt"></i> 会议地点</a>
+            <a href="#" class="publication-link"><i class="fas fa-users"></i> 报名注册</a>
+            <a href="#" class="publication-link"><i class="fas fa-file-alt"></i> 征稿通知</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">空间智能</span>
+              <span class="publication-tag">机器人感知</span>
+              <span class="publication-tag">3D视觉</span>
+              <span class="publication-tag">国际研讨会</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-calendar"></i>
+                <span>2025年7月</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 研讨会2: 多模态感知与理解研讨会 -->
+        <div class="publication-card" data-category="workshop">
+          <h3 class="publication-title">多模态感知与理解技术研讨会</h3>
+          <p class="publication-authors">主办单位：中国科学技术大学SPIN实验室、清华大学</p>
+          <span class="publication-venue">MM-Perception Workshop 2025</span>
+          <p class="publication-abstract">
+            本研讨会专注于多模态感知技术的最新进展，包括视觉-语言理解、点云-文本交互、多传感器融合等前沿技术。
+            邀请相关领域专家学者分享研究成果，促进多模态感知技术的发展与应用。
+          </p>
+          
+          <div class="workshop-organizers" style="margin: 20px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h4 style="margin-bottom: 15px; color: var(--primary-color); font-size: 1.1rem;">组织者信息</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+              <div class="organizer-info">
+                <strong>联合主席：</strong> 夏彦教授<br>
+                <em>中科大SPIN实验室</em><br>
+                <small>多模态3D场景理解专家</small>
+              </div>
+              <div class="organizer-info">
+                <strong>联合主席：</strong> 张三教授<br>
+                <em>清华大学</em><br>
+                <small>研究方向：多模态机器学习</small>
+              </div>
+              <div class="organizer-info">
+                <strong>技术委员会：</strong> 丁梓峰博士<br>
+                <em>中科大SPIN实验室</em><br>
+                <small>负责技术审查与评估</small>
+              </div>
+              <div class="organizer-info">
+                <strong>宣传主席：</strong> 张庚源博士<br>
+                <em>中科大SPIN实验室</em><br>
+                <small>负责会议宣传与推广</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-microphone"></i> 主题演讲</a>
+            <a href="#" class="publication-link"><i class="fas fa-presentation"></i> 海报展示</a>
+            <a href="#" class="publication-link"><i class="fas fa-handshake"></i> 合作机会</a>
+            <a href="#" class="publication-link"><i class="fas fa-envelope"></i> 联系我们</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">多模态感知</span>
+              <span class="publication-tag">视觉-语言</span>
+              <span class="publication-tag">传感器融合</span>
+              <span class="publication-tag">学术研讨</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-calendar"></i>
+                <span>2025年9月</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 研讨会3: SLAM与机器人导航研讨会 -->
+        <div class="publication-card" data-category="workshop">
+          <h3 class="publication-title">SLAM与机器人导航技术研讨会</h3>
+          <p class="publication-authors">主办单位：中国科学技术大学SPIN实验室、IEEE RAS合肥分会</p>
+          <span class="publication-venue">SLAM-Nav Workshop 2025</span>
+          <p class="publication-abstract">
+            本研讨会聚焦SLAM技术与机器人导航的最新发展，涵盖视觉SLAM、激光SLAM、多机器人协同导航等核心技术。
+            会议将邀请工业界和学术界专家分享实用技术和前沿研究，推动SLAM技术的产业化应用。
+          </p>
+          
+          <div class="workshop-organizers" style="margin: 20px 0; padding: 20px; background-color: #f8f9fa; border-radius: 8px;">
+            <h4 style="margin-bottom: 15px; color: var(--primary-color); font-size: 1.1rem;">组织者信息</h4>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px;">
+              <div class="organizer-info">
+                <strong>总主席：</strong> 夏彦教授<br>
+                <em>中科大SPIN实验室主任</em><br>
+                <small>SLAM与地点识别技术专家</small>
+              </div>
+              <div class="organizer-info">
+                <strong>工业界联络：</strong> 李四博士<br>
+                <em>华为技术有限公司</em><br>
+                <small>机器人导航产品化专家</small>
+              </div>
+              <div class="organizer-info">
+                <strong>学术委员会：</strong> Mariia Gladkova博士<br>
+                <em>中科大SPIN实验室</em><br>
+                <small>研究方向：视觉SLAM技术</small>
+              </div>
+              <div class="organizer-info">
+                <strong>展示协调：</strong> 史乐天博士<br>
+                <em>中科大SPIN实验室</em><br>
+                <small>负责技术展示与演示</small>
+              </div>
+            </div>
+          </div>
+
+          <div class="publication-links">
+            <a href="#" class="publication-link"><i class="fas fa-robot"></i> 技术展示</a>
+            <a href="#" class="publication-link"><i class="fas fa-industry"></i> 产业论坛</a>
+            <a href="#" class="publication-link"><i class="fas fa-graduation-cap"></i> 学生竞赛</a>
+            <a href="#" class="publication-link"><i class="fas fa-network-wired"></i> 技术交流</a>
+          </div>
+          <div class="publication-info">
+            <div class="publication-tags">
+              <span class="publication-tag">SLAM技术</span>
+              <span class="publication-tag">机器人导航</span>
+              <span class="publication-tag">产业应用</span>
+              <span class="publication-tag">技术展示</span>
+            </div>
+            <div class="publication-metrics">
+              <div class="metric">
+                <i class="fas fa-calendar"></i>
+                <span>2025年11月</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
     <!-- 分页 -->
@@ -571,6 +893,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       const filterButtons = document.querySelectorAll('.filter-btn');
       const publicationCards = document.querySelectorAll('.publication-card');
+      const publicationYears = document.querySelectorAll('.publications-year');
 
       filterButtons.forEach(button => {
         button.addEventListener('click', function () {
@@ -587,6 +910,32 @@
               card.style.display = 'block';
             } else {
               card.style.display = 'none';
+            }
+          });
+
+          // 显示/隐藏相应的年份区块
+          publicationYears.forEach(year => {
+            if (filterValue === 'all') {
+              // 显示所有年份区块，但隐藏学术研讨会区块
+              if (year.getAttribute('data-category') === 'workshop') {
+                year.style.display = 'none';
+              } else {
+                year.style.display = 'block';
+              }
+            } else if (filterValue === 'workshop') {
+              // 只显示学术研讨会区块
+              if (year.getAttribute('data-category') === 'workshop') {
+                year.style.display = 'block';
+              } else {
+                year.style.display = 'none';
+              }
+            } else {
+              // 显示普通年份区块，隐藏学术研讨会区块
+              if (year.getAttribute('data-category') === 'workshop') {
+                year.style.display = 'none';
+              } else {
+                year.style.display = 'block';
+              }
             }
           });
         });
