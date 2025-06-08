@@ -130,7 +130,7 @@ function initSlider () {
 
   // 开始自动轮播
   function startSlideshow () {
-    slideInterval = setInterval(nextSlide, 8000); // 延长到8秒
+    slideInterval = setInterval(nextSlide, 15000); // 延长到15秒，提供更多阅读时间
   }
 
   // 重置轮播计时器
@@ -300,7 +300,7 @@ document.addEventListener('visibilitychange', function () {
           }, 800); // 与CSS中的过渡时间相匹配
         }, 50);
 
-      }, 8000); // 延长到8秒
+      }, 15000); // 延长到15秒，提供更多阅读时间
     }
   }
 }); 
