@@ -93,6 +93,19 @@
       width: 100%;
     }
 
+    /* 本科生团队居中显示 */
+    .team-category:last-of-type .team-grid {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .team-category:last-of-type .team-card {
+      max-width: 400px;
+      width: 100%;
+    }
+
     .team-card {
       background-color: white;
       border-radius: var(--card-radius);
@@ -305,7 +318,7 @@
     <div class="container">
       <div class="category-title">
         <h2>研究生</h2>
-        <p>123</p>
+        <!-- <p>123</p> -->
       </div>
 
       <div class="team-grid">
@@ -405,6 +418,29 @@
     </div>
   </section>
 
+  <!-- 本科生 -->
+  <section class="team-category">
+    <div class="container">
+      <div class="category-title">
+        <h2>本科生</h2>
+      </div>
+      <div class="team-grid">
+        <!-- 本科生1 -->
+        <div class="team-card">
+          <div class="member-photo">
+            <img src="images/yangjiayue.jfif" alt="杨家越">
+          </div>
+          <div class="member-info">
+            <h3>杨家越</h3>
+            <div class="member-position">本科生</div>
+            <div class="member-short-bio">
+              杨家越，中科大网络空间安全专业在读本科生。
+            </div>
+          </div>
+        </div>
+
+      </div>
+  </section>
 
   <!-- 加入我们 -->
   <section class="join-us">
